@@ -1,16 +1,14 @@
-// pages/SignupPage.js
 "use client";
 import React, { useState } from "react";
 import Input from "@/components/Input";
-import { join } from "@/utils/features/join";
+import { join } from "@/utils/features/auth";
 import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [instagramId, setInstagramId] = useState("");
-  const [gender, setGender] = useState(false); // false for male, true for female
+  const [gender, setGender] = useState(false);
   const [introduction, setIntroduction] = useState("");
   const [errors, setErrors] = useState({});
   const router = useRouter();
@@ -29,11 +27,6 @@ export default function SignupPage() {
       newErrors.password = "비밀번호는 최소 8자 이상이어야 합니다.";
     }
 
-    if (password !== confirmPassword) {
-      valid = false;
-      newErrors.confirmPassword = "비밀번호가 일치하지 않습니다.";
-    }
-
     if (valid) {
       const result = await join(password, instagramId, gender, introduction);
       if (result.success) {
@@ -46,12 +39,20 @@ export default function SignupPage() {
     }
   };
 
-  console.log(password);
+  console.log(password, instagramId, "비번아뒤");
 
   return (
     <div>
       <div className="text-purple-300">Signup Page</div>
       <form onSubmit={handleSubmit}>
+        <Input
+          label="인스타그램 아이디"
+          type="text"
+          value={instagramId}
+          onChange={(e) => setInstagramId(e.target.value)}
+          placeholder="인스타그램 아이디를 입력하세요"
+        />
+
         <Input
           label="비밀번호"
           type="password"
@@ -59,22 +60,6 @@ export default function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호"
           error={errors.password}
-        />
-        <Input
-          label="비밀번호 확인"
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="비밀번호 확인"
-          error={errors.confirmPassword}
-        />
-
-        <Input
-          label="인스타그램 아이디"
-          type="text"
-          value={instagramId}
-          onChange={(e) => setInstagramId(e.target.value)}
-          placeholder="인스타그램 아이디를 입력하세요"
         />
 
         <fieldset className="text-black">
