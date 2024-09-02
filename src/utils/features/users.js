@@ -16,7 +16,7 @@ export const saveUserData = async (
     const user = auth.currentUser;
 
     if (user) {
-      const userDocRef = doc(db, "USERS", userId);
+      const userDocRef = doc(db, "USERS", instagramId);
 
       await setDoc(
         userDocRef,
@@ -41,12 +41,12 @@ export const saveUserData = async (
 
 import { getDoc } from "firebase/firestore";
 
-export const getUserData = async (userId) => {
+export const getUserData = async (instagramId) => {
   try {
     const db = getFirestore();
 
     // Reference to the user's document in the USERS collection
-    const userDocRef = doc(db, "USERS", userId);
+    const userDocRef = doc(db, "USERS", instagramId);
 
     // Fetch the document
     const userDoc = await getDoc(userDocRef);

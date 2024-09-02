@@ -10,8 +10,10 @@ export default function Page() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (user?.uid) {
-        const data = await getUserData(user.uid);
+      if (user?.email) {
+        const instagramId = user.email.split("@")[0];
+
+        const data = await getUserData(instagramId);
         setUserData(data);
 
         if (data && data.PICK_ID && Array.isArray(data.PICK_ID)) {
@@ -32,10 +34,10 @@ export default function Page() {
       {userData ? (
         <div className="text-black">
           <h1>User Profile</h1>
-          <p>Gender: {userData.GENDER}</p>
+          <p>Gender: {userData.GENDER ? "여자" : "남자"}</p>
           <p>Instagram ID: {userData.INSTAGRAM_ID}</p>
           <p>Introduction: {userData.INTRODUCTION}</p>
-          <p>내가 뽑은 아이디: {userData.PICK_ID?.join(", ")}</p>
+          <p>내가 뽑은 아이디: {userData.PICK_ID}</p>
           <p>내가 뽑은 아이디 자소: {pickIntros.join(", ")}</p>
         </div>
       ) : (
