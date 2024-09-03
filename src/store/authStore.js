@@ -4,10 +4,9 @@ import { persist } from "zustand/middleware";
 export const useAuthStore = create(
   persist(
     (set) => ({
-      user: null,
-      authToken: null,
-      setUser: (user, authToken) => set({ user, authToken }),
-      clearUser: () => set({ user: null, authToken: null }),
+      instagramId: null,
+      setInstagramId: (instagramId) => set({ instagramId }),
+      clearInstagramId: () => set({ instagramId: null }),
     }),
     {
       name: "auth-storage",

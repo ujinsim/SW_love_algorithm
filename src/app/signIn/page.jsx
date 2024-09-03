@@ -2,19 +2,21 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/utils/features/signIn";
+import { useAuthStore } from "@/store/authStore";
 
 export default function LoginPage() {
   const [instagramId, setInstagramId] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const setInstagramIdInStore = useAuthStore((state) => state.setInstagramId);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       await signIn(instagramId, password);
-
-      router.push("signIn/result");
+      setInstagramIdInStore(instagramId);
+      router.push("/signIn/result");
     } catch (error) {
       console.error("Failed to sign in:", error);
     }

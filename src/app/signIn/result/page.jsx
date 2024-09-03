@@ -6,13 +6,11 @@ import { useAuthStore } from "@/store/authStore";
 export default function Page() {
   const [userData, setUserData] = useState(null);
   const [pickIntros, setPickIntros] = useState([]);
-  const user = useAuthStore((state) => state.user);
+  const instagramId = useAuthStore((state) => state.instagramId);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (user?.email) {
-        const instagramId = user.email.split("@")[0];
-
+      if (instagramId) {
         const data = await getUserData(instagramId);
         setUserData(data);
 
@@ -27,7 +25,7 @@ export default function Page() {
     };
 
     fetchUserData();
-  }, [user]);
+  }, [instagramId]);
 
   return (
     <div>
@@ -37,7 +35,7 @@ export default function Page() {
           <p>Gender: {userData.GENDER ? "여자" : "남자"}</p>
           <p>Instagram ID: {userData.INSTAGRAM_ID}</p>
           <p>Introduction: {userData.INTRODUCTION}</p>
-          <p>내가 뽑은 아이디: {userData.PICK_ID}</p>
+          <p>내가 뽑은 아이디: {userData.PICK_ID?.join(", ")}</p>
           <p>내가 뽑은 아이디 자소: {pickIntros.join(", ")}</p>
         </div>
       ) : (

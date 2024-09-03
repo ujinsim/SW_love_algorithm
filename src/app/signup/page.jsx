@@ -39,8 +39,6 @@ export default function SignupPage() {
     }
   };
 
-  console.log(password, instagramId, "비번아뒤");
-
   return (
     <div>
       <div className="text-purple-300">Signup Page</div>
