@@ -13,7 +13,6 @@ export default function Home() {
 
           <div>
             <Logo />
-
             <button className="flex flex-col items-center w-full mb-8 shadow-lg rounded-lg p-4 bg-white hover:bg-pink-50 transition-colors duration-300 border-pink-100 border-2">
               <FloatingImage
                 src="/images/test.png"
