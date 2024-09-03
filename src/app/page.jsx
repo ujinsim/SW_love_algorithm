@@ -1,6 +1,6 @@
 import MainButton from "@/components/MainButton";
 import FloatingImage from "@/components/FloatingImage";
-import TitleContent from "@/components/TitleContent";
+import TitleContent from "@/components/TItleContent";
 import InfoComponent from "@/components/InfoComponent";
 import Logo from "@/components/Logo";
 
