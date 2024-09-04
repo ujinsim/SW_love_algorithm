@@ -1,23 +1,27 @@
+"use client";
 import MainButton from "@/components/MainButton";
 import FloatingImage from "@/components/FloatingImage";
 import TitleContent from "@/components/TItleContent";
 import InfoComponent from "@/components/InfoComponent";
 import Logo from "@/components/Logo";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="bg-pink-50 min-h-screen w-full overflow-x-hidden flex items-center justify-center">
-      <div className="w-full max-w-[600px] flex flex-col items-center py-5">
-        <div className="w-[92%] bg-white h-full rounded-3xl shadow-xl px-7 pb-7">
-          <div className="text-5xl font-bold text-gray-900 w-full flex justify-center pb-8"></div>
-
+      <div className="w-full max-w-[600px] flex flex-col items-center ">
+        <div className="w-[90%] bg-white h-full rounded-3xl shadow-xl px-8 pb-8">
           <div>
             <Logo />
-            <button className="flex flex-col items-center w-full mb-8 shadow-lg rounded-lg p-4 bg-white hover:bg-pink-50 transition-colors duration-300 border-pink-100 border-2">
+            <button
+              onClick={() => router.push("/test")}
+              className="flex flex-col items-center w-full mb-8 shadow-lg rounded-lg bg-white hover:bg-pink-50 transition-colors duration-300 border-pink-100 border-2"
+            >
               <FloatingImage
                 src="/images/test.png"
                 alt="test"
-                className="w-3/5 max-w-[200px] h-auto"
+                className="w-3/5 max-w-[160px] h-auto"
               />
               <TitleContent
                 title="나의 연애 유형은 ..? 🤔"

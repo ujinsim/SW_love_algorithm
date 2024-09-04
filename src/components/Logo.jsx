@@ -6,7 +6,7 @@ export default function Logo() {
       <img
         src="/images/mainLogo.png"
         alt="Main Logo"
-        className="w-full max-w-[400px] h-auto pb-3"
+        className="w-full max-w-[350px] h-auto pb-3"
       />
     </div>
   );

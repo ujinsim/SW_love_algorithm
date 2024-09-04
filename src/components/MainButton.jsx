@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function MainButton({
   title,
@@ -11,7 +12,7 @@ export default function MainButton({
   const router = useRouter();
 
   const baseStyles =
-    "w-full flex flex-col rounded-xl py-3 px-4 shadow-md transition-transform duration-300 ease-in-out transform ";
+    "w-full flex items-center justify-between rounded-xl py-3 px-5 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105";
 
   const variantStyles = {
     primary: "bg-pink-200 hover:bg-pink-300 text-gray-900 border-pink-300",
@@ -33,10 +34,11 @@ export default function MainButton({
         onClick={handleClick}
         className={`${baseStyles} ${variantStyles[variant]} border-2`}
       >
-        <div className="text-xl font-sans">{title}</div>
-        <div className="text-sm font-sans whitespace-nowrap text-gray-700 mt-1">
-          {text}
+        <div className="flex flex-col justify-start w-full text-start">
+          <div className="text-xl font-sans">{title}</div>
+          <div className="text-sm font-sans text-gray-700 mt-1 ">{text}</div>
         </div>
+        <IoIosArrowForward className="text-xl text-gray-700" />
       </button>
     </div>
   );
