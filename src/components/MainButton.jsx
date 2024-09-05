@@ -2,41 +2,34 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function MainButton({
-  title,
-  text,
-  variant = "default",
-  onClick,
-}) {
+export default function MainButton({ title, text, onClick, emoji }) {
   const router = useRouter();
 
   const baseStyles =
-    "w-full flex flex-col rounded-xl py-3 px-4 shadow-md transition-transform duration-300 ease-in-out transform ";
-
-  const variantStyles = {
-    primary: "bg-pink-200 hover:bg-pink-300 text-gray-900 border-pink-300",
-    secondary:
-      "bg-purple-100 hover:bg-purple-200 text-gray-900 border-purple-300",
-    tertiary:
-      "bg-yellow-100 hover:bg-yellow-200 text-gray-900 border-yellow-300",
-  };
+    "w-full flex flex-col rounded-xl py-3 px-4 shadow-md transition-transform duration-300 ease-in-out transform w-full justify-start text-start ";
 
   const handleClick = () => {
     if (onClick) {
       router.push(onClick);
     }
   };
+  const hoverStyles =
+    "hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out transform ";
 
   return (
-    <div className="rounded-2xl border border-transparent">
+    <div
+      className={`${hoverStyles} w-full rounded-2xl border border-transparent `}
+    >
       <button
         onClick={handleClick}
-        className={`${baseStyles} ${variantStyles[variant]} border-2`}
+        className={`${baseStyles} bg-gradient-to-b from-white to-pulple-400 `}
       >
-        <div className="text-xl font-sans">{title}</div>
-        <div className="text-sm font-sans whitespace-nowrap text-gray-700 mt-1">
-          {text}
-        </div>
+        <div className="text-lg font-sans text-neutral-700">{title}</div>
+        <div
+          className="text-xs font-sans text-neutral-800 mt-1 w-full justify-start flex"
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
+        <div className="text-8xl pt-2">{emoji}</div>
       </button>
     </div>
   );
