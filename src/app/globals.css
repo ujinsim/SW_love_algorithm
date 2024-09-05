@@ -3,3 +3,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+  gap: 1rem;
+  animation: slide 10s linear infinite alternate;
+}
+
+.animate-slide > * {
+  flex: 0 0 auto;
+}
