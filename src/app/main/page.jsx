@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import TypeCarousel from "@/components/main/typeCarousel";
-import TestButton from "@/components/main/testButton";
-import SideButtons from "@/components/main/sideButtons";
+import TestButton from "@/components/main/TestButton";
+import SideButtons from "@/components/main/SideButtons";
 import { RxTriangleRight } from "react-icons/rx";
 import AdModal from "@/components/advertisement/AdModal";
 
@@ -32,9 +32,9 @@ export default function page() {
 
       {showModal && (
         <AdModal
-          value={"핫식스"}
+          value={"사이다"}
           valueColor="text-blue-700"
-          img={"images/hotSix.PNG"}
+          img={"images/cider.PNG"}
           onClose={handleModalClose}
         />
       )}
