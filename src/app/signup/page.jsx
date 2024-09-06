@@ -47,7 +47,7 @@ export default function SignupFlow() {
       selectedEmoji
     );
     if (result.success) {
-      router.push("/");
+      router.push("/signIn/result");
     } else {
       alert(`회원가입 중 오류가 발생했습니다: ${result.error}`);
     }

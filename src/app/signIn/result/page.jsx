@@ -1,25 +1,33 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { getUserData } from "@/utils/features/users";
+import { fetchCompatibleUsers } from "@/utils/features/match";
 import { useAuthStore } from "@/store/authStore";
 
 export default function Page() {
   const [userData, setUserData] = useState(null);
-  const [pickIntros, setPickIntros] = useState([]);
+  const [pickData, setPickData] = useState([]);
+  const [compatibleUsers, setCompatibleUsers] = useState([]);
   const instagramId = useAuthStore((state) => state.instagramId);
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (instagramId) {
-        const data = await getUserData(instagramId);
-        setUserData(data);
+        try {
+          const data = await getUserData(instagramId);
+          setUserData(data);
 
-        if (data && data.PICK_ID && Array.isArray(data.PICK_ID)) {
-          const pickIntroPromises = data.PICK_ID.map((pickId) =>
-            getUserData(pickId).then((pickData) => pickData.INTRODUCTION)
-          );
-          const intros = await Promise.all(pickIntroPromises);
-          setPickIntros(intros);
+          if (data) {
+            const compatibleUsersList = await fetchCompatibleUsers(
+              data.TARGET_GENDER,
+              data.TYPE,
+              instagramId
+            );
+            setCompatibleUsers(compatibleUsersList);
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
         }
       }
     };
@@ -27,16 +35,37 @@ export default function Page() {
     fetchUserData();
   }, [instagramId]);
 
+  useEffect(() => {
+    const fetchPickData = async () => {
+      if (userData && userData.PICK_ID) {
+        try {
+          const pickUserData = await getUserData(userData.PICK_ID);
+
+          setPickData(pickUserData);
+        } catch (error) {
+          console.error("Error fetching pick data:", error);
+        }
+      }
+    };
+
+    fetchPickData();
+  }, [userData]);
+
+  console.log(userData, "유저데이터");
+  console.log(pickData, "픽데이터");
+
   return (
     <div>
       {userData ? (
         <div className="text-black">
           <h1>User Profile</h1>
-          <p>Gender: {userData.GENDER ? "여자" : "남자"}</p>
-          <p>Instagram ID: {userData.INSTAGRAM_ID}</p>
+          <p>Gender: {userData.GENDER}</p>
+          <p>Instagram ID: {instagramId}</p>
           <p>Introduction: {userData.INTRODUCTION}</p>
-          <p>내가 뽑은 아이디: {userData.PICK_ID?.join(", ")}</p>
-          <p>내가 뽑은 아이디 자소: {pickIntros.join(", ")}</p>
+          <p>Type: {userData.TYPE}</p>
+          <p>내가 뽑은 아이디: {userData.PICK_ID}</p>
+          <p>내가 뽑은 아이디 자소: {pickData.INTRODUCTION}</p>
+          <p>내가 뽑은 아이디 이모지: {pickData.EMOJI}</p>
         </div>
       ) : (
         <p className="text-black">Loading user data...</p>

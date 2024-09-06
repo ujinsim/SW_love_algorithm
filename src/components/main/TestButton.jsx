@@ -1,10 +1,21 @@
+"use client";
 import React from "react";
 import FloatingImage from "@/components/FloatingImage";
 import TitleContent from "../TItleContent";
+import { useRouter } from "next/navigation";
 
 export default function TestButton() {
+  const router = useRouter();
+
+  const moveTest = () => {
+    router.push("/test");
+  };
+
   return (
-    <button className="flex flex-col rounded-lg items-center w-full mb-4 transition-colors duration-300">
+    <button
+      onClick={moveTest}
+      className="flex flex-col rounded-lg items-center w-full mb-4 transition-colors duration-300"
+    >
       <FloatingImage
         src="images/mainLogo.png"
         alt="test"

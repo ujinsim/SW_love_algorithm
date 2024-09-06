@@ -19,13 +19,13 @@ export default function GenderSelection({
       <div className="flex gap-4">
         <button
           className={`flex flex-col border-transparent border-2 shadow-md rounded-3xl p-4 transition-colors duration-200 ${
-            gender === "male" ? " border-blue-500" : "bg-white"
+            gender === "MALE" ? " border-blue-500" : "bg-white"
           }`}
-          onClick={() => handleGenderChange("male")}
+          onClick={() => handleGenderChange("MALE")}
         >
           <div className="flex w-full justify-between">
             <div className="flex w-full items-center justify-between pb-3">
-              남자 {gender === "male" && <FaCheck />}
+              남자 {gender === "MALE" && <FaCheck />}
             </div>
           </div>
           <div className="text-7xl">🚹</div>
@@ -33,13 +33,13 @@ export default function GenderSelection({
 
         <button
           className={`flex flex-col border-2 border-transparent shadow-md rounded-3xl p-4 transition-colors duration-200 ${
-            gender === "female" ? " border-pink-500" : "bg-white"
+            gender === "FEMALE" ? " border-pink-500" : "bg-white"
           }`}
-          onClick={() => handleGenderChange("female")}
+          onClick={() => handleGenderChange("FEMALE")}
         >
           <div className="flex w-full justify-between">
             <div className="flex w-full items-center justify-between pb-3">
-              여자 {gender === "female" && <FaCheck />}
+              여자 {gender === "FEMALE" && <FaCheck />}
             </div>
           </div>
           <div className="text-7xl">🚺</div>
