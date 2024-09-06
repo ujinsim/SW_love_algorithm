@@ -1,4 +1,3 @@
-// components/Input.js
 import React from "react";
 
 const Input = ({ label, type, value, onChange, placeholder, error }) => {
@@ -16,7 +15,7 @@ const Input = ({ label, type, value, onChange, placeholder, error }) => {
           error ? "border-red-500" : ""
         }`}
       />
-      {error && <p className="text-red-500 text-xs italic">{error}</p>}
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </div>
   );
 };
