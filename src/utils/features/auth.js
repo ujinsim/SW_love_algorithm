@@ -2,10 +2,17 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import "../firebase/firebase_config";
 import { saveUserData } from "./users";
 
-const join = async (password, instagramId, gender, introduction) => {
+const join = async (
+  password,
+  instagramId,
+  selectedType,
+  gender,
+  targetGender,
+  introduction,
+  selectedEmoji
+) => {
   try {
     const auth = getAuth();
-
     const email = `${instagramId}@naver.com`;
 
     const { user } = await createUserWithEmailAndPassword(
@@ -14,7 +21,15 @@ const join = async (password, instagramId, gender, introduction) => {
       password
     );
 
-    await saveUserData(user.uid, gender, instagramId, introduction);
+    await saveUserData(
+      user.uid,
+      selectedType,
+      gender,
+      targetGender,
+      instagramId,
+      introduction,
+      selectedEmoji
+    );
 
     return { success: true };
   } catch (error) {
