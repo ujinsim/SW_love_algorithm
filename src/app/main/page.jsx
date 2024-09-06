@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import TypeCarousel from "@/components/main/typeCarousel";
+import TypeCarousel from "@/components/main/TypeCarousel";
 import TestButton from "@/components/main/TestButton";
 import SideButtons from "@/components/main/SideButtons";
 import { RxTriangleRight } from "react-icons/rx";
-import AdModal from "@/components/advertisement/AdModal";
+import AdModal from "@/components/advertisement/adModal";
 
 export default function page() {
   const [showModal, setShowModal] = useState(true);
@@ -33,7 +33,7 @@ export default function page() {
       {showModal && (
         <AdModal
           value={"사이다"}
-          valueColor="text-blue-700"
+          valueColor="text-green-500"
           img={"images/cider.PNG"}
           onClose={handleModalClose}
         />

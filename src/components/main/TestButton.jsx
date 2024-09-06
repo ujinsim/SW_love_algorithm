@@ -1,6 +1,6 @@
 import React from "react";
 import FloatingImage from "@/components/FloatingImage";
-import TitleContent from "@/components/TitleContent";
+import TitleContent from "../TItleContent";
 
 export default function TestButton() {
   return (
