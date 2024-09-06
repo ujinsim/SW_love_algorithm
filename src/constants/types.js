@@ -6,6 +6,7 @@ export const types = [
       width: "50px",
     },
     code: "AAA",
+    compatibleWith: ["ABA", "AAB", "BAB"], // Java, MySQL, C++
   },
   {
     type: {
@@ -14,6 +15,7 @@ export const types = [
       width: "50px",
     },
     code: "ABB",
+    compatibleWith: ["AAB", "BAB", "BBB"], // MySQL, C++, Go
   },
   {
     type: {
@@ -22,6 +24,7 @@ export const types = [
       width: "40px",
     },
     code: "ABA",
+    compatibleWith: ["AAA", "BAA"], // Python, Assembly
   },
   {
     type: {
@@ -30,6 +33,7 @@ export const types = [
       width: "50px",
     },
     code: "AAB",
+    compatibleWith: ["ABA", "ABB", "BBA"], // Java, JavaScript, Ruby
   },
   {
     type: {
@@ -38,6 +42,7 @@ export const types = [
       width: "50px",
     },
     code: "BAA",
+    compatibleWith: ["ABA", "BAB"], // Java, C++
   },
   {
     type: {
@@ -46,6 +51,7 @@ export const types = [
       width: "50px",
     },
     code: "BAB",
+    compatibleWith: ["AAA", "ABB", "BAA"], // Python, JavaScript, Assembly
   },
   {
     type: {
@@ -54,6 +60,7 @@ export const types = [
       width: "50px",
     },
     code: "BBA",
+    compatibleWith: ["AAB", "ABA", "BBB"], // MySQL, Java, Go
   },
   {
     type: {
@@ -62,5 +69,6 @@ export const types = [
       width: "50px",
     },
     code: "BBB",
+    compatibleWith: ["ABB", "BAB", "BBA"], // JavaScript, C++, Ruby
   },
 ];
