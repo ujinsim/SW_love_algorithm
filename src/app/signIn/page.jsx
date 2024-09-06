@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/utils/features/signIn";
@@ -23,10 +24,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-pink-50 min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
+    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="w-[90%] bg-gradient-to-b from-white  rounded-3xl shadow-xl p-8">
         <div className="text-3xl font-bold text-gray-900 mb-6 text-center">
-          로그인
+          결과 조회하기
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
@@ -47,7 +48,7 @@ export default function LoginPage() {
             type="submit"
             className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-300"
           >
-            로그인
+            조회
           </button>
         </form>
       </div>
