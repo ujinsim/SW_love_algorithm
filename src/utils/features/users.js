@@ -14,7 +14,7 @@ export const saveUserData = async (
   userId,
   selectType,
   gender,
-  targetGender,
+
   instagramId,
   introduction,
   selectEmoji
@@ -27,8 +27,7 @@ export const saveUserData = async (
       userDocRef,
       {
         TYPE: selectType,
-        GENDER: gender,
-        TARGET_GENDER: targetGender,
+        INSTAGRAM_ID: instagramId,
         INTRODUCTION: introduction,
         PICKED_ID: [],
         PICK_ID: [],
@@ -62,6 +61,11 @@ export const saveUserIsPicked = async (instagramId, selectType, gender) => {
     throw error;
   }
 };
+
+//남자 여자 필터
+// 남자중에 조회
+// 여자중에 조회
+// isPick에 들어가면 해당 유저 조회
 
 /**
  * 특정 Instagram ID를 가진 사용자의 데이터를 Firestore에서 가져오는 함수

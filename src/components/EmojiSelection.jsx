@@ -10,8 +10,8 @@ export default function EmojiSelection({ selectedEmoji, setSelectedEmoji }) {
         {emojis.map((emoji, index) => (
           <button
             key={index}
-            className={`border-2 shadow-xl bg-white  rounded-full hover:bg-slate-100 transition-colors duration-200 ${
-              selectedEmoji === index ? "border-2 border-purple-600" : ""
+            className={`border-2 border-transparent shadow-xl bg-transparent  rounded-full hover:bg-slate-100 transition-colors duration-200 ${
+              selectedEmoji === index ? "bg-slate-100" : ""
             }`}
             style={{
               flex: "1",

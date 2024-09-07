@@ -9,7 +9,6 @@ const join = async (
   instagramId,
   selectedType,
   gender,
-  targetGender,
   introduction,
   selectedEmoji
 ) => {
@@ -27,13 +26,11 @@ const join = async (
       user.uid,
       selectedType,
       gender,
-      targetGender,
       instagramId,
       introduction,
       selectedEmoji
     );
 
-    await saveUserIsPicked(instagramId, selectedType, gender);
     useAuthStore.getState().setInstagramId(instagramId);
 
     return { success: true };
