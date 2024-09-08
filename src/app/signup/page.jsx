@@ -19,7 +19,7 @@ export default function SignupPage() {
   const [emoji, setEmoji] = useState("");
   const [errors, setErrors] = useState({});
   const [consent, setConsent] = useState(false);
-  const [isInputComplete, setIsInputComplete] = useState(false); // 입력 완료 상태 관리
+  const [isInputComplete, setIsInputComplete] = useState(false);
   const router = useRouter();
 
   const validatePassword = (pwd) => {
@@ -73,7 +73,7 @@ export default function SignupPage() {
         {!isInputComplete ? (
           <>
             <div className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              상대방 뽑기
+              💌 메모 달기 💌
             </div>
             <form onSubmit={handleInputSubmit} className="flex flex-col gap-4">
               <ImageDropdown
@@ -140,7 +140,6 @@ export default function SignupPage() {
             </form>
           </>
         ) : (
-          // 입력 완료 후 인증 폼
           <Certification onSubmit={handleCertificationSubmit} />
         )}
       </div>

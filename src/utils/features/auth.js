@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import "../firebase/firebase_config";
 import { saveUserData } from "./users";
-import { saveUserIsPicked } from "./users";
 import { useAuthStore } from "@/store/authStore";
 
 const join = async (

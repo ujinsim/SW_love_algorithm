@@ -21,7 +21,7 @@ export default function TestButton() {
         alt="test"
         className="w-4/5 max-w-[250px] h-auto"
       />
-      <TitleContent title="나의 언어 유형은..? 🤔" content="테스트 하러가기" />
+      <TitleContent title="나의 연애 유형은..? 🤔" content="테스트 하러가기" />
     </button>
   );
 }

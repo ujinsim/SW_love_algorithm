@@ -26,7 +26,7 @@ export default function MainButton({ title, text, onClick, emoji }) {
       >
         <div className="text-lg font-sans text-neutral-700">{title}</div>
         <div
-          className="text-xs font-sans text-neutral-800 mt-1 w-full justify-start flex"
+          className="text-xs font-sans text-neutral-800 mt-1 w-full justify-start flex whitespace-nowrap"
           dangerouslySetInnerHTML={{ __html: text }}
         />
         <div className="text-8xl pt-2">{emoji}</div>
