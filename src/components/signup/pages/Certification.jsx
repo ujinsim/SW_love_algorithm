@@ -29,7 +29,7 @@ export default function Certification({ onSubmit }) {
   };
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center w-full text-center">
       <header className="text-3xl font-bold text-gray-900 mb-6 drop-shadow-md">
         잠깐 !!
       </header>
@@ -48,21 +48,25 @@ export default function Certification({ onSubmit }) {
           방문하여
           <span className="text-blue-500"> 인증코드</span>를 입력받으세요 !
         </p>
-        <p className="text-base pt-3 text-gray-600">
+        <p className="text-base py-3 text-gray-600">
           ( 첫 뽑기 1000원 재뽑기 500원 )
         </p>
       </div>
-
-      <Input
-        label="융합소프트웨어 인증코드"
-        type="text"
-        value={authCode}
-        onChange={(e) => setAuthCode(e.target.value)}
-        placeholder="융합소프트웨어 부스에서 입력받으세요 !"
-        error={errors.authCode}
+      <div className="text-start px-2">
+        <Input
+          label="융합소프트웨어 인증코드"
+          type="text"
+          value={authCode}
+          onChange={(e) => setAuthCode(e.target.value)}
+          placeholder="융합소프트웨어 부스에서 입력받으세요 !"
+          error={errors.authCode}
+        />
+      </div>
+      <Button
+        text="카드 만들기"
+        onClick={handleSubmit}
+        className={"mt-4 mx-2"}
       />
-
-      <Button text="뽑기" onClick={handleSubmit} />
     </div>
   );
 }

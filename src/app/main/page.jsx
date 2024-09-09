@@ -15,7 +15,7 @@ export default function page() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-dvh w-full overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[600px] flex flex-col items-center">
         <div className="w-[94%] bg-gradient-to-b from-white rounded-3xl h-full px-5 py-5 pt-0">
           <TypeCarousel />

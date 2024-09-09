@@ -15,7 +15,7 @@ export default function EmojiSelection({ selectedEmoji, setSelectedEmoji }) {
             }`}
             style={{
               flex: "1",
-              fontSize: "5vw",
+              fontSize: "200%",
             }}
             onClick={() => setSelectedEmoji(emoji)}
           >

@@ -23,8 +23,7 @@ export default function SignupPage() {
   const router = useRouter();
 
   const validatePassword = (pwd) => {
-    const passwordRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    const passwordRegex = /^.{6,}$/;
     return passwordRegex.test(pwd);
   };
 
@@ -35,8 +34,7 @@ export default function SignupPage() {
 
     if (!validatePassword(password)) {
       valid = false;
-      newErrors.password =
-        "비밀번호는 6자 이상, 문자, 숫자, 특수문자를 포함해야 합니다.";
+      newErrors.password = "비밀번호는 6자 이상 입력해야 합니다.";
     }
 
     if (!consent) {
@@ -68,7 +66,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-dvh py-2 w-full overflow-hidden flex items-center justify-center">
       <div className="w-[90%] max-w-md bg-gradient-to-b from-white rounded-3xl shadow-xl p-8">
         {!isInputComplete ? (
           <>
