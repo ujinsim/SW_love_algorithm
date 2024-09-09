@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import "../firebase/firebase_config";
 import { saveUserData } from "./users";
-import { saveUserIsPicked } from "./users";
 import { useAuthStore } from "@/store/authStore";
 
 const join = async (
@@ -9,7 +8,6 @@ const join = async (
   instagramId,
   selectedType,
   gender,
-  targetGender,
   introduction,
   selectedEmoji
 ) => {
@@ -27,13 +25,11 @@ const join = async (
       user.uid,
       selectedType,
       gender,
-      targetGender,
       instagramId,
       introduction,
       selectedEmoji
     );
 
-    await saveUserIsPicked(instagramId, selectedType, gender);
     useAuthStore.getState().setInstagramId(instagramId);
 
     return { success: true };
