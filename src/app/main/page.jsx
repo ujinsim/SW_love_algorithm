@@ -5,7 +5,6 @@ import TestButton from "@/components/main/TestButton";
 import SideButtons from "@/components/main/SideButtons";
 import { RxTriangleRight } from "react-icons/rx";
 import AdModal from "@/components/advertisement/adModal";
-import { useRouter } from "next/navigation";
 
 export default function page() {
   const [showModal, setShowModal] = useState(true);

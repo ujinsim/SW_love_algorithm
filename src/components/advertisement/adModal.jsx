@@ -9,10 +9,10 @@ export default function AdModal({
 }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="relative bg-white shadow-lg p-6 rounded-xl max-w-[400px] text-center">
+      <div className="relative bg-white shadow-lg p-6 rounded-xl max-w-[500px] text-center">
         <div className="text-4xl font-bold text-pink-600 mb-5">축하합니다!</div>
         <img
-          src={img}
+          alt={"상품이미지"}
           width={"50px"}
           className="-translate-y-32 translate-x-64 absolute"
         />
@@ -20,7 +20,7 @@ export default function AdModal({
         <div className="mb-4 text-gray-700">
           <div className="flex">
             당신은
-            <span className={`${valueColor} pl-1`}>{value}</span>
+            <span className={`${valueColor} pl-1`}>상품명</span>
             공유 이벤트 증정 대상자입니다.
           </div>
 
@@ -34,7 +34,7 @@ export default function AdModal({
           </div>
 
           <div>
-            <span className={`${valueColor}`}> {value}</span> 증정드립니다.
+            <span className={`${valueColor}`}> 상품명</span> 증정드립니다.
           </div>
         </div>
 
