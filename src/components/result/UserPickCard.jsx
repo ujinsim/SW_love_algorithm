@@ -4,24 +4,10 @@ import { typeMap } from "@/constants/typeMap";
 
 export default function UserPickCard({ user, userType }) {
   const userData = typeMap[userType];
-  const [rotation, setRotation] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setRotation(scrollTop / 1); // 스크롤에 따라 회전 조정
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
-    <div className="flex justify-center items-center w-full cursor-pointer rounded-xl perspective">
-      <div
-        className="card-container"
-        style={{ transform: `rotateY(${rotation}deg)` }}
-      >
+    <div className="flex justify-center items-center w-full cursor-pointer rounded-xl perspective min-h-max">
+      <div className="card-container">
         <div className="card front">
           <div
             className={`w-full justify-center whitespace-nowrap border-b-2 border-opacity-20 px-12 py-5 ${
@@ -45,14 +31,11 @@ export default function UserPickCard({ user, userType }) {
             </div>
           </div>
 
-          <div className="flex justify-center items-start w-full px-4 py-8">
+          <div className="flex flex-col justify-center items-center w-full px-4 py-8">
             <div className="text-9xl">{user.EMOJI}</div>
-          </div>
-        </div>
-
-        <div className="card back">
-          <div className="text-2xl px-10 pt-12 text-neutral-700">
-            {user.INSTAGRAM_ID}
+            <div className="text-2xl px-10 pt-5 text-neutral-700">
+              {user.INSTAGRAM_ID}
+            </div>
           </div>
         </div>
       </div>

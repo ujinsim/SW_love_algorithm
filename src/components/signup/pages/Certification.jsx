@@ -29,7 +29,7 @@ export default function Certification({ onSubmit }) {
   };
 
   return (
-    <div className="flex flex-col justify-center w-full text-center">
+    <div className="flex flex-col justify-center w-full text-center max-w-[350px] bg-white bg-opacity-75 p-5 rounded-lg">
       <header className="text-3xl font-bold text-gray-900 mb-6 drop-shadow-md">
         잠깐 !!
       </header>

@@ -101,7 +101,7 @@ export const getAllUsers = async (lastDoc = null, gender = null) => {
     let usersQuery = collection(db, "USERS"); // "USERS" 컬렉션 참조
 
     // PICK_ID 필드가 존재하고 빈 배열인 문서만 조회
-    usersQuery = query(usersQuery, where("PICK_ID", "==", []));
+    usersQuery = query(usersQuery, where("PICKED_ID", "==", []));
 
     // 성별 필터링
     if (gender) {
@@ -114,7 +114,7 @@ export const getAllUsers = async (lastDoc = null, gender = null) => {
     }
 
     // 최대 4개의 문서 가져오기
-    usersQuery = query(usersQuery, limit(4));
+    usersQuery = query(usersQuery, limit(8));
 
     // Firestore에서 문서들 조회
     const querySnapshot = await getDocs(usersQuery);

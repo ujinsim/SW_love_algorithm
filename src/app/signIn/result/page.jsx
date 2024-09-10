@@ -156,12 +156,7 @@ export default function Page() {
         <div>
           <div>
             {!userData ? (
-              <div className="text-center text-black flex flex-col max-w-[500px] w-full py-10">
-                비회원 상태입니다
-                <button className="p-2 mx-32 bg-pink-600 rounded-xl text-white mb-8">
-                  로그인 하러가기
-                </button>
-              </div>
+              <></>
             ) : (
               <>
                 <UserProfile userData={userData} instagramId={instagramId} />
@@ -195,13 +190,13 @@ export default function Page() {
               </div>
 
               <div className="flex w-full flex-wrap px-2">
-                {allUsers.length > 0 ? (
+                {allUsers.length > 0 &&
                   allUsers.map((user) => {
                     const userType = typeMap[user.TYPE];
                     return (
                       <div
                         key={user.id}
-                        className="w-1/2 px-12 py-4 flex flex-col"
+                        className=" py-4 w-1/2 px-2 flex flex-col"
                       >
                         <UserCard
                           user={user}
@@ -212,12 +207,7 @@ export default function Page() {
                         />
                       </div>
                     );
-                  })
-                ) : (
-                  <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
-                    <p>사용할 수 있는 유저가 없습니다</p>
-                  </div>
-                )}
+                  })}
               </div>
               {!loading && !lastVisibleDoc && (
                 <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
