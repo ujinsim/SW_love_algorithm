@@ -3,9 +3,14 @@
 import React from "react";
 
 export default function HorizontalLine({
-  color = "border-zinc-400",
-  thickness = "border-t-1",
-  margin = "my-1",
+  color = "bg-pink-200",
+  height = "h-0.5",
+  margin = "my-2",
+  shadow = "shadow-md",
 }) {
-  return <hr className={` ${thickness} ${color} ${margin} `} />;
+  return (
+    <div
+      className={`w-full ${height} ${color} ${margin} ${shadow} rounded-lg shadow-lg shadow-pink-400 `}
+    />
+  );
 }

@@ -14,16 +14,16 @@ export default function page() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-dvh w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-purple-300 to-pink-500 min-h-dvh w-full overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[600px] flex flex-col items-center">
-        <div className="w-[94%] bg-gradient-to-b from-white rounded-3xl h-full px-5 py-5 pt-0">
+        <div className="w-[94%]  from-white rounded-3xl h-full px-2 py-5 pt-0">
           <TypeCarousel />
 
           <TestButton />
 
           <div className="text-zinc-100 px-2 font-sans font-bold text-sm flex items-center">
             <RxTriangleRight className="text-base text-zinc-100 " />
-            뽑기전 테스트를 진행해주세요
+            카드 만들기 전 테스트를 진행해주세요
           </div>
 
           <SideButtons />
