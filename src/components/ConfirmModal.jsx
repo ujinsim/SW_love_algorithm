@@ -1,58 +1,51 @@
-// 모달 컴포넌트
+import { AiFillInfoCircle } from "react-icons/ai";
+
 const ConfirmModal = ({ isOpen, onConfirm, onCancel, loading }) => {
-  if (!isOpen) return null; // 모달이 열려 있지 않으면 렌더링하지 않음
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
-        <p className="mb-4">이 유저를 선택하시겠습니까?</p>
-        <div className="flex justify-end gap-4">
+      <div className="bg-white p-6 rounded-2xl shadow-lg">
+        <div className="flex justify-center flex-col text-center ">
+          <AiFillInfoCircle className="text-6xl text-pink-200 flex w-full text-center my-4" />
+          <p className="mb-4 text-black font-sans text-2xl whitespace-nowrap text-center flex justify-center">
+            <span className="font-bold text-pink-600">해당 유저</span>를
+            선택하시겠습니까?
+          </p>
+
+          <p className="text-black whitespace-nowrap">
+            유저를 선택하면{" "}
+            <span className="font-bold text-blue-500">
+              해당 유저의 인스타 아이디
+            </span>
+            를 조회할 수 있습니다
+          </p>
+
+          <p className="mb-7 text-neutral-500 whitespace-nowrap pt-10 pb-4 font-normal">
+            유저 선택 후에는{" "}
+            <span className="font-normal text-red-600">
+              다른 유저의 카드를 조회할 수 없습니다
+            </span>
+          </p>
+        </div>
+        <div className="flex gap-4 w-full px-10">
           <button
             onClick={onCancel}
-            className="bg-gray-500 text-white px-4 py-2 rounded"
+            className="bg-gray-300 text-white px-4 py-3 w-full rounded-xl hover:bg-gray-400"
           >
             아니오
           </button>
           <button
             onClick={onConfirm}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            disabled={loading} // 로딩 중이면 버튼 비활성화
+            className="bg-pink-300 text-white px-4 w-full py-3 rounded-xl hover:bg-pink-400"
+            disabled={loading}
           >
-            {loading ? "처리 중..." : "네"}
+            {loading ? "..." : "네"}
           </button>
         </div>
       </div>
     </div>
   );
 };
-
-return (
-  <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
-    {/* 유저 목록 */}
-    <ul className="flex flex-wrap gap-12 w-full pt-4">
-      {allUsers.map((user, index) => (
-        <li
-          key={user.id}
-          className="cursor-pointer"
-          onClick={() => handlePickUser(user.id)}
-        >
-          {/* 유저 정보 표시 */}
-          {/* ... */}
-        </li>
-      ))}
-    </ul>
-
-    {/* 선택 확인 모달 */}
-    <ConfirmModal
-      isOpen={isModalOpen}
-      onConfirm={handleConfirmPick}
-      onCancel={handleCancelPick}
-      loading={loading}
-    />
-
-    {/* 에러 메시지 */}
-    {error && <p className="text-red-500">{error}</p>}
-  </div>
-);
 
 export default ConfirmModal;

@@ -1,24 +1,33 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   getUserData,
   getAllUsers,
   fetchCompatibleUsers,
 } from "@/utils/features/users";
 import { useAuthStore } from "@/store/authStore";
+import { useTabStore } from "@/store/useTapStore";
 import UserCard from "@/components/result/UserCard";
+import UserProfile from "@/components/result/UserProfile";
 import { typeMap } from "@/constants/typeMap.js";
+import "react-loading-skeleton/dist/skeleton.css";
+import ConfirmModal from "@/components/ConfirmModal";
 
 export default function Page() {
   const [userData, setUserData] = useState(null);
-  const [pickData, setPickData] = useState(null);
-  const [pickUserId, setPickUserId] = useState(null);
+  const [selectUserId, setSelectedUserId] = useState(null);
   const [allUsers, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fetchingMore, setFetchingMore] = useState(false);
   const instagramId = useAuthStore((state) => state.instagramId);
+  const { activeTab, setActiveTab } = useTabStore();
   const [lastVisibleDoc, setLastVisibleDoc] = useState(null);
   const observerRef = useRef(null);
+  const tabRef = useRef(null);
+  const [isTabSticky, setIsTabSticky] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isError, setError] = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -26,23 +35,25 @@ export default function Page() {
         try {
           const data = await getUserData(instagramId);
           setUserData(data);
-          if (userData) {
-            setPickUserId(userData.PICK_ID);
-          }
+          setPickUserId(data.PICK_ID);
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
       }
     };
-
     fetchUserData();
   }, [instagramId]);
 
   useEffect(() => {
     const fetchAllUserData = async () => {
       setLoading(true);
+      setAllUsers([]);
+      setLastVisibleDoc(null);
       try {
-        const { users, lastVisibleDoc } = await getAllUsers();
+        const { users, lastVisibleDoc } = await getAllUsers(
+          null,
+          activeTab === "전체" ? null : activeTab === "여자" ? "FEMALE" : "MALE"
+        );
         setAllUsers(users);
         setLastVisibleDoc(lastVisibleDoc);
       } catch (error) {
@@ -53,36 +64,22 @@ export default function Page() {
     };
 
     fetchAllUserData();
-  }, []);
-
-  useEffect(() => {
-    const fetchPickData = async () => {
-      if (pickUserId) {
-        try {
-          const pickUserData = await getUserData(pickUserId);
-          setPickData(pickUserData);
-        } catch (error) {
-          console.error("Error fetching pick data:", error);
-        }
-      }
-    };
-
-    fetchPickData();
-  }, [userData]);
+  }, [activeTab]);
 
   const fetchUsers = async () => {
     if (loading || !lastVisibleDoc) return;
-    setLoading(true);
+    setFetchingMore(true);
     try {
       const { users, lastVisibleDoc: newLastVisibleDoc } = await getAllUsers(
-        lastVisibleDoc
+        lastVisibleDoc,
+        activeTab === "전체" ? null : activeTab === "여자" ? "FEMALE" : "MALE"
       );
       setAllUsers((prevUsers) => [...prevUsers, ...users]);
       setLastVisibleDoc(newLastVisibleDoc);
     } catch (error) {
       console.error("Error fetching more users:", error);
     } finally {
-      setLoading(false);
+      setFetchingMore(false);
     }
   };
 
@@ -104,135 +101,145 @@ export default function Page() {
         if (currentObserver) observer.unobserve(currentObserver);
       };
     }
-  }, [lastVisibleDoc]);
+  }, [lastVisibleDoc, activeTab]);
 
-  console.log(allUsers, "올 유저");
-  console.log(userData, "유저데이터");
+  useEffect(() => {
+    const handleScroll = () => {
+      if (tabRef.current) {
+        const rect = tabRef.current.getBoundingClientRect();
+
+        if (rect.top <= 0) {
+          setIsTabSticky(true);
+        } else {
+          setIsTabSticky(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  // 유저 선택 시 모달을 여는 함수
+  const handlePickUser = (id) => {
+    setSelectedUserId(id); // 선택한 유저의 ID를 저장
+    setModalOpen(true); // 모달 열기
+  };
+
+  // 모달에서 유저 선택을 확정하는 함수
+  const handleConfirmPick = async () => {
+    if (!selectUserId) return; // 선택된 유저가 없으면 종료
+
+    try {
+      setLoading(true); // 로딩 상태 시작
+      await fetchCompatibleUsers(instagramId, selectUserId); // 유저 선택 API 호출
+      alert("유저가 선택되었습니다.");
+    } catch (error) {
+      setError("유저 선택에 실패했습니다.");
+      console.error(error);
+    } finally {
+      setLoading(false); // 로딩 상태 종료
+      setModalOpen(false); // 모달 닫기
+    }
+  };
+
+  // 모달 취소 시 호출되는 함수
+  const handleCancelPick = () => {
+    setModalOpen(false); // 모달 닫기
+  };
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
-      <div className="w-[95%] bg-green-900 bg-opacity-20 max-w-[500px] my-10 rounded-xl">
-        {/* Header */}
-        <header className="w-full bg-green-900 bg-opacity-20 rounded-xl mb-10">
-          <div className="text-2xl p-4 flex bg-black rounded-t-xl relative">
-            <span className="text-xs w-full justify-start pt-2">🟠 🟤 🔴</span>
-            <div className="z-10 justify-center w-full">memos.....</div>
-          </div>
-        </header>
+    <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-dvh py-2 w-full overflow-hidden flex items-center justify-center">
+      <div className="w-full bg-opacity-20 max-w-[500px] my-12 rounded-xl">
+        <div className="bg-white shadow-md rounded-t-xl"></div>
 
-        {/* 비회원 상태 */}
-        {!userData ? (
-          <div className="text-center text-black flex w-full flex-col">
-            비회원 상태입니다
-            <button className="p-2 mx-32 bg-red-600 rounded-xl">
-              로그인 하러가기
-            </button>
-            {allUsers.length > 0 ? (
-              // flex 및 flex-wrap으로 한 줄에 두 개씩 표시
-              <div className="flex flex-wrap justify-center gap-4 w-full pt-4">
-                {allUsers.map((user, index) => {
-                  const userType = typeMap[user.TYPE] || {};
-
-                  return (
-                    <div key={user.id} className="w-full sm:w-1/2 lg:w-1/3 p-2">
-                      <UserCard
-                        user={user}
-                        userType={userType}
-                        handleConfirmPick={() => {}}
-                        emoji={user.EMOJI}
-                        intro={user.INTRODUCTION}
-                      />
-                    </div>
-                  );
-                })}
+        <div>
+          <div>
+            {!userData ? (
+              <div className="text-center text-black flex flex-col max-w-[500px] w-full py-10">
+                비회원 상태입니다
+                <button className="p-2 mx-32 bg-pink-600 rounded-xl text-white mb-8">
+                  로그인 하러가기
+                </button>
               </div>
             ) : (
-              <p>유저가 없습니다.</p>
+              <>
+                <UserProfile userData={userData} instagramId={instagramId} />
+              </>
             )}
           </div>
-        ) : (
-          <div className="text-black">
-            {/* 회원 상태 */}
-            <div className="flex justify-between px-10">
-              <div>
-                <h1 className="text-2xl font-bold mb-4">내 정보</h1>
-                <p>
-                  <strong>ID:</strong> {instagramId}
-                </p>
-                <p>
-                  <strong>내 소개:</strong> {userData.INTRODUCTION}
-                </p>
-                <p>
-                  <strong>Type:</strong> {userData.TYPE}
-                </p>
-              </div>
-            </div>
 
-            {/* PICK_ID 유저 정보 */}
-            {userData.PICK_ID.length > 0 ? (
-              <div>
-                <p>
-                  <strong>내가 뽑은 유저 ID:</strong> {userData.PICK_ID}
-                </p>
-                <p>
-                  <strong>소개:</strong> {pickData?.INTRODUCTION}
-                </p>
-                <p>
-                  <strong>이모지:</strong> {pickData?.EMOJI}
-                </p>
+          {userData?.PICK_ID?.length === 0 && (
+            <div className="w-full py-2">
+              <div
+                ref={tabRef}
+                className={`flex w-full p-0 -top-0 ${
+                  isTabSticky
+                    ? "fixed top-0 left-0 w-full z-50 bg-none bg-white "
+                    : ""
+                }`}
+              >
+                {["전체", "남자", "여자"].map((tab) => (
+                  <div
+                    key={tab}
+                    className={`flex-1 text-center py-3 cursor-pointer rounded-b-2xl rounded-lg ${
+                      activeTab === tab
+                        ? "bg-gradient-to-b from-purple-100 via-pink-200 text-black font-bold shadow-xl"
+                        : "bg-white text-gray-500"
+                    }`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab}
+                  </div>
+                ))}
               </div>
-            ) : (
-              <div>
-                <ul className="flex w-full px-10">
-                  {allUsers.map((user) => {
+
+              <div className="flex w-full flex-wrap px-2">
+                {allUsers.length > 0 ? (
+                  allUsers.map((user) => {
                     const userType = typeMap[user.TYPE];
-
-                    const handleConfirmPick = async (userId) => {
-                      try {
-                        setLoading(true);
-                        await fetchCompatibleUsers(instagramId, userId);
-                        alert("유저가 선택되었습니다.");
-                      } catch (error) {
-                        console.error("유저 선택에 실패했습니다.", error);
-                      } finally {
-                        setLoading(false);
-                      }
-                    };
-
                     return (
-                      <div key={user.id} className="w-full p-2">
+                      <div
+                        key={user.id}
+                        className="w-1/2 px-12 py-4 flex flex-col"
+                      >
                         <UserCard
                           user={user}
                           userType={userType}
-                          handleConfirmPick={() => {}}
+                          handleConfirmPick={() => handlePickUser(user.id)}
                           emoji={user.EMOJI}
                           intro={user.INTRODUCTION}
                         />
                       </div>
                     );
-                  })}
-                </ul>
+                  })
+                ) : (
+                  <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
+                    <p>사용할 수 있는 유저가 없습니다</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        )}
+              {!loading && !lastVisibleDoc && (
+                <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
+                  <p>더 이상 카드가 존재하지 않습니다.</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <ConfirmModal
+          isOpen={isModalOpen}
+          onConfirm={handleConfirmPick}
+          onCancel={handleCancelPick}
+          loading={loading} // 로딩 상태 전달
+        />
 
         <div ref={observerRef} className="py-3"></div>
 
-        {loading && (
+        {fetchingMore && (
           <div className="flex justify-center py-8">
-            <div>로딩중</div>
-          </div>
-        )}
-
-        {!loading && !lastVisibleDoc && (
-          <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
-            <p>더 이상 메모가 존재하지 않습니다.</p>
-          </div>
-        )}
-
-        {!loading && !lastVisibleDoc && (
-          <div className="w-full flex flex-col justify-center items-center py-3 mt-12 mb-8">
-            <p>더 많은 메모를 보고싶다면 ? 회원가입하기.</p>
+            <div className="spinner"></div>
           </div>
         )}
       </div>

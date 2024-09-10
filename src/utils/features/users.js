@@ -95,7 +95,7 @@ export const getUserData = async (instagramId) => {
   }
 };
 
-export const getAllUsers = async (lastDoc = null) => {
+export const getAllUsers = async (lastDoc = null, gender = null) => {
   try {
     const db = getFirestore();
     let usersQuery = collection(db, "USERS"); // "USERS" 컬렉션 참조
@@ -103,11 +103,17 @@ export const getAllUsers = async (lastDoc = null) => {
     // PICK_ID 필드가 존재하고 빈 배열인 문서만 조회
     usersQuery = query(usersQuery, where("PICK_ID", "==", []));
 
+    // 성별 필터링
+    if (gender) {
+      usersQuery = query(usersQuery, where("GENDER", "==", gender));
+    }
+
     // 페이징을 위해 마지막 문서 이후부터 시작
     if (lastDoc) {
       usersQuery = query(usersQuery, startAfter(lastDoc));
     }
 
+    // 최대 4개의 문서 가져오기
     usersQuery = query(usersQuery, limit(4));
 
     // Firestore에서 문서들 조회
@@ -121,7 +127,7 @@ export const getAllUsers = async (lastDoc = null) => {
 
     // 마지막 문서 스냅샷 (페이징을 위한 참조)
     const lastVisibleDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-
+    console.log(gender, users, "유저와젠더");
     return { users, lastVisibleDoc }; // 유저 데이터와 마지막 문서 반환
   } catch (error) {
     console.error("Error fetching users: ", error);

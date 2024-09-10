@@ -22,3 +22,58 @@
 .animate-slide > * {
   flex: 0 0 auto;
 }
+
+/* styles/spinner.css */
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #ff69b4; /* Pink */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+}
+
+.front {
+  background: white;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back {
+  background: #f8f8f8;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
