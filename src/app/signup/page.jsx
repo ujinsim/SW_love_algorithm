@@ -9,7 +9,6 @@ import { types } from "@/constants/types";
 import EmojiSelection from "@/components/EmojiSelection";
 import Certification from "@/components/signup/pages/Certification";
 import { join } from "@/utils/features/auth";
-import HorizontalLine from "@/components/HorizontalLine";
 
 export default function SignupPage() {
   const [password, setPassword] = useState("");
@@ -67,16 +66,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-300 min-h-screen w-full flex items-center justify-center py-10">
+    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-300 w-full flex items-center justify-center py-10">
       {!isInputComplete ? (
-        <div className="w-full -mb-14">
-          <div className="bg-gradient-to-b from-white via-purple-100 z-10 text-3xl font-bold text-gray-900 text-center fixed w-full top-0 py-4 bg-white ">
+        <div className="w-full flex flex-col items-center justify-center">
+          <div className="flex justify-center items-center bg-gradient-to-b from-white via-purple-100 z-10 text-3xl font-bold text-gray-900 text-center fixed w-full top-0 py-4 bg-white">
             💌 카드 만들기 💌
             <div className="absolute bottom-0 left-0 top-0 w-full shadow-xl" />
           </div>
           <form
             onSubmit={handleInputSubmit}
-            className="flex flex-col gap-4 px-10 pt-12 pb-10"
+            className="flex flex-col gap-4 px-10 pt-20 pb-10 w-full max-w-[500px] justify-center "
           >
             <ImageDropdown
               label="유형"
@@ -84,7 +83,7 @@ export default function SignupPage() {
               selected={selectedType}
               onSelect={setSelectedType}
             />
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full">
               <Input
                 label="인스타그램 아이디"
                 type="text"
@@ -101,7 +100,7 @@ export default function SignupPage() {
                 error={errors.password}
               />
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 w-full">
               <GenderSelection
                 label="성별"
                 gender={gender}
@@ -116,7 +115,7 @@ export default function SignupPage() {
               onChange={(e) => setIntroduction(e.target.value)}
               placeholder="자기소개를 입력하세요"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full">
               <input
                 type="checkbox"
                 id="consent"
@@ -133,7 +132,7 @@ export default function SignupPage() {
             )}
             <button
               type="submit"
-              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-300"
+              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-300 w-full"
             >
               입력 완료
             </button>

@@ -22,7 +22,7 @@ export default function UserCard({ user, userType, handleConfirmPick }) {
         </div>
 
         {/* 유저 소개 */}
-        <div className="w-full flex-grow px-4">
+        <div className="w-full flex-grow px-4 ">
           <div className="text-base text-start pt-4 text-neutral-700">
             {user.INTRODUCTION}
           </div>

@@ -1,26 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { types } from "@/constants/types";
 import { typeMap } from "@/constants/typeMap.js";
 import { getUserData } from "@/utils/features/users";
 import UserPickCard from "./UserPickCard";
+import CompatibleTypes from "../CompatibleTypes";
 
 const UserProfile = ({ userData, instagramId }) => {
   const userType = typeMap[userData.TYPE] || {};
   const borderColor = userType.borderColor || "border-gray-300";
   const textColor = userType.textColor || "text-gray-900";
-  const bgColor = userType.gradient || "bg-gray-100";
 
   const pickUserId = userData.PICK_ID || "";
-
   const [pickUserData, setPickData] = useState(null);
-
-  // 사용자 유형 코드
-  const userCode = userData.TYPE;
-
-  const compatibleTypes = types.filter((type) =>
-    type.compatibleWith.includes(userCode)
-  );
 
   useEffect(() => {
     const fetchPickData = async () => {
@@ -63,37 +54,16 @@ const UserProfile = ({ userData, instagramId }) => {
           </div>
         </div>
       </div>
+
       <div className="w-full flex justify-center mb-6">
-        {userData.PICK_ID ? (
+        {userData.PICK_ID.length > 0 ? (
           pickUserData && (
             <div className="max-w-[400px] flex flex-col w-full h-[530px]">
               <UserPickCard user={pickUserData} userType={pickUserData.TYPE} />
             </div>
           )
         ) : (
-          <div className="mt-4 px-5 font-thin text-neutral-600 py-2 bg-white bg-opacity-60">
-            <p>이 유형은 나와 잘 맞아요 👏</p>
-            <div className="flex flex-wrap gap-4 mt-2">
-              {compatibleTypes.length > 0 ? (
-                compatibleTypes.map((type) => (
-                  <div
-                    key={type.code}
-                    className="flex items-center gap-1 p-2 rounded-lg"
-                  >
-                    <img
-                      src={`../${type.type.src}`}
-                      alt={type.type.label}
-                      width={type.type.width}
-                      className="h-4 w-4"
-                    />
-                    <span className="text-xs font-sans">{type.type.label}</span>
-                  </div>
-                ))
-              ) : (
-                <p>호환되는 유형이 없습니다.</p>
-              )}
-            </div>
-          </div>
+          <CompatibleTypes userCode={userData.TYPE} />
         )}
       </div>
     </div>
