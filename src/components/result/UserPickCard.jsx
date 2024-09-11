@@ -25,7 +25,7 @@ export default function UserPickCard({ user, userType }) {
             </div>
           </div>
 
-          <div className="w-full px-10">
+          <div className="w-full px-10 justify-center flex">
             <div className="text-2xl px-10 pt-4 text-neutral-700">
               {user.INTRODUCTION}
             </div>

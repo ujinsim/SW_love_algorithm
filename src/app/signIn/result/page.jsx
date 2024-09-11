@@ -13,6 +13,7 @@ import UserProfile from "@/components/result/UserProfile";
 import { typeMap } from "@/constants/typeMap.js";
 import "react-loading-skeleton/dist/skeleton.css";
 import ConfirmModal from "@/components/ConfirmModal";
+import Navbar from "@/components/NavBar";
 
 export default function Page() {
   const [userData, setUserData] = useState(null);
@@ -126,7 +127,6 @@ export default function Page() {
     setSelectedUserId(id); // 선택한 유저의 ID를 저장
     setModalOpen(true); // 모달 열기
   };
-
   // 모달에서 유저 선택을 확정하는 함수
   const handleConfirmPick = async () => {
     if (!selectUserId) return; // 선택된 유저가 없으면 종료
@@ -135,6 +135,7 @@ export default function Page() {
       setLoading(true); // 로딩 상태 시작
       await fetchCompatibleUsers(instagramId, selectUserId); // 유저 선택 API 호출
       alert("유저가 선택되었습니다.");
+      window.location.reload(); // 유저 선택 후 페이지 새로고침
     } catch (error) {
       setError("유저 선택에 실패했습니다.");
       console.error(error);
@@ -222,7 +223,7 @@ export default function Page() {
           isOpen={isModalOpen}
           onConfirm={handleConfirmPick}
           onCancel={handleCancelPick}
-          loading={loading} // 로딩 상태 전달
+          loading={loading}
         />
 
         <div ref={observerRef} className="py-3"></div>

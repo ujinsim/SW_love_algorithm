@@ -25,12 +25,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-200 min-h-screen w-full overflow-hidden flex items-center justify-center">
       <div className="w-[90%] bg-gradient-to-b from-white rounded-3xl shadow-xl p-8">
-        <div className="text-3xl font-bold text-gray-900 mb-6 text-center">
-          결과 조회하기
+        <div className="text-3xl font-sans text-gray-900 mb-6 text-center">
+          로그인
         </div>
-        <HorizontalLine margin="my-6" />
+
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-4 text-black"
@@ -53,7 +53,7 @@ export default function LoginPage() {
             type="submit"
             className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-300"
           >
-            조회
+            조회하기
           </button>
         </form>
       </div>
