@@ -22,9 +22,16 @@ export default function SignupPage() {
   const [isInputComplete, setIsInputComplete] = useState(false);
   const router = useRouter();
 
+  // 비밀번호 유효성 검사
   const validatePassword = (pwd) => {
     const passwordRegex = /^.{6,}$/;
     return passwordRegex.test(pwd);
+  };
+
+  // 인스타그램 아이디 유효성 검사 (1~30자, 알파벳, 숫자, 밑줄만 허용)
+  const validateInstagramId = (id) => {
+    const instagramIdRegex = /^[a-zA-Z0-9_]{1,30}$/;
+    return instagramIdRegex.test(id);
   };
 
   const handleInputSubmit = (e) => {
@@ -32,14 +39,29 @@ export default function SignupPage() {
     let valid = true;
     let newErrors = {};
 
+    // 인스타그램 아이디 유효성 검사
+    if (!validateInstagramId(instagramId)) {
+      valid = false;
+      newErrors.instagramId =
+        "인스타그램 아이디는 알파벳, 숫자, 밑줄만 사용하며 1~30자여야 합니다.";
+    }
+
+    // 비밀번호 유효성 검사
     if (!validatePassword(password)) {
       valid = false;
       newErrors.password = "비밀번호는 6자 이상 입력해야 합니다.";
     }
 
+    // 개인정보 수집 동의 검사
     if (!consent) {
       valid = false;
       newErrors.consent = "개인정보 수집 동의가 필요합니다.";
+    }
+
+    // 필수 입력 항목 체크
+    if (!selectedType || !gender || !emoji || !introduction) {
+      valid = false;
+      newErrors.required = "모든 필수 항목을 입력해야 합니다.";
     }
 
     if (valid) {
@@ -66,7 +88,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-300 w-full flex items-center justify-center py-10">
+    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-300 max-h-max flex items-center justify-center py-10">
       {!isInputComplete ? (
         <div className="w-full flex flex-col items-center justify-center">
           <div className="flex justify-center items-center bg-gradient-to-b from-white via-purple-100 z-10 text-3xl font-bold text-gray-900 text-center fixed w-full top-0 py-4 bg-white">
@@ -89,7 +111,8 @@ export default function SignupPage() {
                 type="text"
                 value={instagramId}
                 onChange={(e) => setInstagramId(e.target.value)}
-                placeholder="@제외 입력"
+                placeholder="특수문자 제외 입력"
+                error={errors.instagramId}
               />
               <Input
                 label="비밀번호"
@@ -114,6 +137,7 @@ export default function SignupPage() {
               value={introduction}
               onChange={(e) => setIntroduction(e.target.value)}
               placeholder="자기소개를 입력하세요"
+              error={errors.required}
             />
             <div className="flex items-center gap-2 w-full">
               <input
@@ -129,6 +153,9 @@ export default function SignupPage() {
             </div>
             {errors.consent && (
               <p className="text-sm text-red-600">{errors.consent}</p>
+            )}
+            {errors.required && (
+              <p className="text-sm text-red-600">{errors.required}</p>
             )}
             <button
               type="submit"

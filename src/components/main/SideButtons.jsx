@@ -18,7 +18,7 @@ export default function SideButtons() {
           title={"카드 뽑기"}
           text={" 다른 사람의 카드를 뽑고<br/> 아이디를 확인할 수 있어요!"}
           variant="first"
-          onClick={instagramId ? "/signIn/guest" : "/signIn/result"}
+          onClick={instagramId ? "/signIn/result" : "/signIn/guest"}
           emoji={"🎁"}
         />
       </div>

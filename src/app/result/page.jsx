@@ -153,7 +153,7 @@ export default function Page() {
     <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-dvh py-2 w-full overflow-hidden flex items-center justify-center">
       <div className="w-full bg-opacity-20 max-w-[500px] my-12 rounded-xl">
         <div className="bg-white shadow-md rounded-t-xl"></div>
-
+        <Navbar />
         <div>
           <div>
             {!userData ? (

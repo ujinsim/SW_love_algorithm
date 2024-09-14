@@ -4,13 +4,12 @@ export default function UserCard({ user, userType, handleConfirmPick }) {
   return (
     <div
       onClick={() => handleConfirmPick(user.id)}
-      className={`flex justify-center items-center w-full cursor-pointer rounded-xl`}
+      className={`flex justify-center items-center w-full cursor-pointer rounded-xl shadow-xl`}
     >
       <div
         className={`bg-white transition-all duration-300 hover:bg-slate-50 hover:bg-opacity-40 rounded-md w-full flex flex-col justify-between text-center`}
         style={{ minHeight: "260px", maxHeight: "260px" }}
       >
-        {/* 유형명 */}
         <div
           className={`w-full whitespace-nowrap border-b-2 border-opacity-20 px-3 py-3 ${userType.borderColor} ${userType.textColor} text-center rounded-t-lg`}
         >
@@ -30,7 +29,7 @@ export default function UserCard({ user, userType, handleConfirmPick }) {
 
         {/* 이모지: 항상 카드 하단에 위치 */}
         <div className="w-full px-4">
-          <div className="text-8xl flex justify-center pb-4">{user.EMOJI}</div>
+          <div className="text-8xl flex justify-center pb-4 ">{user.EMOJI}</div>
         </div>
       </div>
     </div>

@@ -63,7 +63,7 @@ const UserProfile = ({ userData, instagramId }) => {
             </div>
           )
         ) : (
-          <CompatibleTypes userCode={userData.TYPE} />
+          <CompatibleTypes userCode={userData.TYPE} size="small" />
         )}
       </div>
     </div>

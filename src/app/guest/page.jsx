@@ -8,7 +8,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
-import Navbar from "@/components/NavBar";
 
 export default function Page() {
   const [allUsers, setAllUsers] = useState([]);
@@ -53,7 +52,6 @@ export default function Page() {
   return (
     <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-dvh w-full overflow-hidden flex items-center justify-center">
       <div className="w-full bg-opacity-20 max-w-[500px] rounded-xl flex flex-col text-center justify-center">
-        <Navbar />
         {loading ? (
           <>
             <div className="flex w-full flex-wrap px-2">
@@ -69,13 +67,12 @@ export default function Page() {
         ) : (
           <>
             {/* 비회원 상태 */}
-            <div className="flex px-20 mx-5 py-10 flex-col text-center gap-2 justify-center rounded-lg">
-              <p className="text-xl py-1 text-black">비회원 입니다</p>
-              <p className="text-base text-gray-800">
-                이미 카드를 만들었다면 ?? 🤩
+            <div className="flex px-20 mx-5 py-10 flex-col text-center justify-center rounded-lg">
+              <p className="text-base text-neutral-600 py-4">
+                이미 카드를 만들었다면?
               </p>
               <Button
-                text={"로그인 하러가기"}
+                text={"로그인 하러 가기"}
                 onClick={() => handleNavigate("/signIn")}
               />
             </div>
@@ -97,7 +94,7 @@ export default function Page() {
                           emoji={user.EMOJI}
                           intro={user.INTRODUCTION}
                           handleConfirmPick={() =>
-                            alert("카드 제작 후 뽑기가 가능 합니다 !")
+                            alert("카드 제작 후 뽑기가 가능합니다!")
                           }
                         />
                       </div>
@@ -105,11 +102,12 @@ export default function Page() {
                   })}
               </div>
 
-              <div className="w-full flex gap-4 flex-col justify-center items-center py-3 mt-12 mb-8 text-black">
-                <p>더 많은 카드를 보고싶다면?</p>
+              <div className="w-full flex gap-4 flex-col px-20 py-3 mt-12 mb-8 text-neutral-600">
+                <p>더 많은 카드를 보고싶다면? 카드를 만들어 보세요! </p>
+
                 <Button
-                  text={"카드 만들러가기"}
-                  onClick={() => handleNavigate("/signup")} // 카드 만들기 페이지로 이동
+                  text={"홈 화면으로 이동"}
+                  onClick={() => handleNavigate("/")}
                 />
               </div>
             </div>

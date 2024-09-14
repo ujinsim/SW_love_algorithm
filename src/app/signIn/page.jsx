@@ -18,15 +18,15 @@ export default function LoginPage() {
     try {
       await signIn(instagramId, password);
       setInstagramIdInStore(instagramId);
-      router.push("/signIn/result");
+      router.push("/result");
     } catch (error) {
       console.error("Failed to sign in:", error);
     }
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-200 min-h-screen w-full overflow-hidden flex items-center justify-center">
-      <div className="w-[90%] bg-gradient-to-b from-white rounded-3xl shadow-xl p-8">
+    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-200 min-h-screen w-full overflow-hidden flex items-center justify-center ">
+      <div className="w-[90%] max-w-[500px] bg-gradient-to-b from-white rounded-3xl shadow-xl p-8">
         <div className="text-3xl font-sans text-gray-900 mb-6 text-center">
           로그인
         </div>
