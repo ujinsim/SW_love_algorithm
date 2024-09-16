@@ -1,17 +1,15 @@
 "use client";
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const questions = [
-  // 첫 글자 결정 질문
+  // 질문 목록
   {
     id: 1,
     question: "나는 만약,,연인과 다투고 나면!!",
     options: [
-      {
-        label: "지금 당장 바로 풀어야지. 지체될 수록 오해만 생겨",
-        value: "A",
-      },
+      { label: "지금 당장 바로 풀어야지. 지체될 수록 오해만 생겨", value: "A" },
       { label: "나는 서로의 입장에 대해 생각할 시간이 필요해!", value: "B" },
     ],
   },
@@ -35,7 +33,6 @@ const questions = [
       { label: "미미미누톤으로 넘어갈게요~", value: "B" },
     ],
   },
-  // 중간 글자 결정 질문
   {
     id: 4,
     question: "만약,, 나는 연인의 전애인을 만나면!!(속마음)",
@@ -50,7 +47,7 @@ const questions = [
     options: [
       {
         label:
-          " 엄마 소개할게 그때 말했던 00이야 하고 소개시켜주기 (위기를 기회로 ><)",
+          "엄마 소개할게 그때 말했던 00이야 하고 소개시켜주기 (위기를 기회로 ><)",
         value: "A",
       },
       {
@@ -66,13 +63,9 @@ const questions = [
       "때는 일주일에 유일하게 공강날 금요일이다. 자기야!! 우리 심심하니까 홍대가서 놀랭??",
     options: [
       { label: "갑자기,,? 오늘은 집에서 쉬고싶은데 ..", value: "A" },
-      {
-        label: "그래! 일주일에서 유일하게 쉬는데 나가 놀아야즤~~",
-        value: "B",
-      },
+      { label: "그래! 일주일에서 유일하게 쉬는데 나가 놀아야즤~~", value: "B" },
     ],
   },
-  // 마지막 글자 결정 질문
   {
     id: 7,
     question:
@@ -151,22 +144,37 @@ export default function Page() {
   const question = questions[currentQuestionIndex];
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-500 to-pink-500 min-h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-screen w-full overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[600px] flex flex-col items-center">
         <div className="w-[94%] bg-gradient-to-b from-white rounded-3xl h-full px-5 py-5 pt-0">
-          <div className="flex w-full justify-center flex-col text-center py-10">
-            <div className="text-black text-2xl px-2">{question.question}</div>
-            <div className="flex flex-col pt-20 gap-10 px-2">
-              {question.options.map((option) => (
-                <butto
-                  key={option.value}
-                  className="bg-slate-50 rounded-full border-2 text-black py-3 px-1 cursor-pointer"
-                  onClick={() => handleAnswer(option.value)}
-                >
-                  {option.label}
-                </butto>
-              ))}
-            </div>
+          {/* ProgressBar */}
+          <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden mb-5">
+            <div
+              className="bg-pink-500 h-2.5"
+              style={{
+                width: `${
+                  ((currentQuestionIndex + 1) / questions.length) * 100
+                }%`,
+              }}
+            />
+          </div>
+
+          <div className="text-black text-2xl px-2 mb-5">
+            질문 {currentQuestionIndex + 1} / {questions.length}
+          </div>
+          <div className="text-black text-2xl px-2 mb-5">
+            {question.question}
+          </div>
+          <div className="flex flex-col pt-20 gap-10 px-2">
+            {question.options.map((option) => (
+              <button
+                key={option.value}
+                className="bg-slate-50 rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 hover:bg-pink-600"
+                onClick={() => handleAnswer(option.value)}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

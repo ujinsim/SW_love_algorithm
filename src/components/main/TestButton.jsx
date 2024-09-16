@@ -12,16 +12,18 @@ export default function TestButton() {
   };
 
   return (
-    <button
-      onClick={moveTest}
-      className="flex flex-col rounded-lg items-center w-full mb-4 transition-colors duration-300"
-    >
+    <button className="flex flex-col rounded-lg items-center w-full mb-4 transition-colors duration-300">
       <FloatingImage
         src="images/mainLogo.png"
         alt="test"
         className="w-4/5 max-w-[250px] h-auto"
       />
-      <TitleContent title="나의 연애 유형은..? 🤔" content="테스트 하러가기" />
+      <TitleContent
+        onClick={moveTest}
+        subtitle={"프로그래밍 언어로 알아보는 "}
+        title="나의 연애 유형은..? 🤔"
+        content="테스트 하러가기"
+      />
     </button>
   );
 }
