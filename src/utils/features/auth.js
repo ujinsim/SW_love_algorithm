@@ -1,11 +1,18 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import "../firebase/firebase_config";
 import { saveUserData } from "./users";
+import { useAuthStore } from "@/store/authStore";
 
-const join = async (password, instagramId, gender, introduction) => {
+const join = async (
+  password,
+  instagramId,
+  selectedType,
+  gender,
+  introduction,
+  selectedEmoji
+) => {
   try {
     const auth = getAuth();
-
     const email = `${instagramId}@naver.com`;
 
     const { user } = await createUserWithEmailAndPassword(
@@ -14,7 +21,16 @@ const join = async (password, instagramId, gender, introduction) => {
       password
     );
 
-    await saveUserData(user.uid, gender, instagramId, introduction);
+    await saveUserData(
+      user.uid,
+      selectedType,
+      gender,
+      instagramId,
+      introduction,
+      selectedEmoji
+    );
+
+    useAuthStore.getState().setInstagramId(instagramId);
 
     return { success: true };
   } catch (error) {
