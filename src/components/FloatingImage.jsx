@@ -1,4 +1,3 @@
-// src/components/FloatingImage.jsx
 import React from "react";
 
 export default function FloatingImage({ src, alt, className }) {
