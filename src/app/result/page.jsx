@@ -104,24 +104,6 @@ export default function Page() {
     }
   }, [lastVisibleDoc, activeTab]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (tabRef.current) {
-        const rect = tabRef.current.getBoundingClientRect();
-
-        if (rect.top <= 0) {
-          setIsTabSticky(true);
-        } else {
-          setIsTabSticky(false);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   // 유저 선택 시 모달을 여는 함수
   const handlePickUser = (id) => {
     setSelectedUserId(id); // 선택한 유저의 ID를 저장
@@ -153,7 +135,7 @@ export default function Page() {
     <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-dvh py-2 w-full overflow-hidden flex items-center justify-center">
       <div className="w-full bg-opacity-20 max-w-[500px] my-12 rounded-xl">
         <div className="bg-white shadow-md rounded-t-xl"></div>
-        <Navbar />
+
         <div>
           <div>
             {!userData ? (
@@ -178,7 +160,7 @@ export default function Page() {
                 {["전체", "남자", "여자"].map((tab) => (
                   <div
                     key={tab}
-                    className={`flex-1 text-center py-3 cursor-pointer rounded-b-2xl rounded-lg ${
+                    className={`flex-1 text-center py-3 cursor-pointer rounded-b-xl ${
                       activeTab === tab
                         ? "bg-gradient-to-b from-purple-100 via-pink-200 text-black font-bold shadow-xl"
                         : "bg-white text-gray-500"

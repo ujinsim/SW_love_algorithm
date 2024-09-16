@@ -30,7 +30,7 @@ const UserProfile = ({ userData, instagramId }) => {
 
   return (
     <div className="w-full text-black">
-      <div className="flex flex-col items-center w-full px-5 mb-6">
+      <div className="flex flex-col items-center w-full px-3 mb-6">
         <p className="py-4 font-sans text-lg text-center w-full ">
           {instagramId}님 환영합니다! 🎉
         </p>
@@ -52,18 +52,15 @@ const UserProfile = ({ userData, instagramId }) => {
               </p>
             </div>
           </div>
+          <CompatibleTypes userCode={userData.TYPE} size="small" />
         </div>
       </div>
 
       <div className="w-full flex justify-center mb-6">
-        {userData.PICK_ID.length > 0 ? (
-          pickUserData && (
-            <div className="max-w-[400px] flex flex-col w-full h-[530px]">
-              <UserPickCard user={pickUserData} userType={pickUserData.TYPE} />
-            </div>
-          )
-        ) : (
-          <CompatibleTypes userCode={userData.TYPE} size="small" />
+        {userData.PICK_ID.length > 0 && pickUserData && (
+          <div className="max-w-[400px] flex flex-col w-full h-[530px]">
+            <UserPickCard user={pickUserData} userType={pickUserData.TYPE} />
+          </div>
         )}
       </div>
     </div>

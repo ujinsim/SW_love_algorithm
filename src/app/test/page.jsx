@@ -159,7 +159,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Question Number and Text */}
           <div className="text-black text-2xl px-2 mb-5">
             질문 {currentQuestionIndex + 1} / {questions.length}
           </div>
@@ -170,7 +169,7 @@ export default function Page() {
             {question.options.map((option) => (
               <button
                 key={option.value}
-                className="bg-slate-50 rounded-full border-2 text-black py-3 px-4 cursor-pointer transition-colors duration-300 hover:bg-slate-200"
+                className="bg-slate-50 rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 hover:bg-pink-600"
                 onClick={() => handleAnswer(option.value)}
               >
                 {option.label}
