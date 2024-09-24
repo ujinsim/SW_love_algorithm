@@ -29,15 +29,15 @@ export default function SignupPage() {
     return passwordRegex.test(pwd);
   };
 
-  // 인스타그램 아이디 유효성 검사 (1~30자, 알파벳, 숫자, 밑줄만 허용)
+  // 인스타그램 아이디 유효성 검사 (1~30자, 알파벳, 숫자, ., 밑줄만 허용)
   const validateInstagramId = (id) => {
-    const instagramIdRegex = /^[a-zA-Z0-9_]{1,30}$/;
+    const instagramIdRegex = /^[a-zA-Z0-9_][a-zA-Z0-9._]{0,29}$/;
     return instagramIdRegex.test(id);
   };
 
-  // 자기소개 유효성 검사 (20글자 이내)
+  // 자기소개 유효성 검사 (25글자 이내)
   const validateIntroduction = (intro) => {
-    return intro.length <= 20;
+    return intro.length <= 25;
   };
 
   const handleInputSubmit = (e) => {
@@ -49,7 +49,7 @@ export default function SignupPage() {
     if (!validateInstagramId(instagramId)) {
       valid = false;
       newErrors.instagramId =
-        "인스타그램 아이디는 알파벳, 숫자, 밑줄만 사용하며 1~30자여야 합니다.";
+        "인스타그램 아이디는 알파벳, 숫자,점(.), 밑줄만 사용하며 1~30자여야 합니다.";
     }
 
     // 비밀번호 유효성 검사
@@ -61,7 +61,7 @@ export default function SignupPage() {
     // 자기소개 유효성 검사
     if (!validateIntroduction(introduction)) {
       valid = false;
-      newErrors.introduction = "자기소개는 20글자 이내로 작성해주세요.";
+      newErrors.introduction = "자기소개는 25글자 이내로 작성해주세요.";
     }
 
     // 개인정보 수집 동의 검사
@@ -95,7 +95,7 @@ export default function SignupPage() {
       emoji
     );
     if (result.success) {
-      router.push("signIn/result");
+      router.push("result");
     } else {
       alert(`회원가입 중 오류가 발생했습니다: ${result.error}`);
     }
@@ -150,7 +150,7 @@ export default function SignupPage() {
               type="text"
               value={introduction}
               onChange={(e) => setIntroduction(e.target.value)}
-              placeholder="자기소개를 20자 이내로 입력하세요"
+              placeholder="자기소개를 25자 이내로 입력하세요"
               error={errors.introduction}
             />
             <div className="flex items-center gap-2 w-full">

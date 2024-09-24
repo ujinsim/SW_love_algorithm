@@ -1,6 +1,22 @@
-// src/components/FloatingImage.jsx
 import React from "react";
+import Image from "next/image";
 
-export default function FloatingImage({ src, alt, className }) {
-  return <img src={src} alt={alt} className={`${className} animate-float`} />;
+export default function FloatingImage({
+  src,
+  alt,
+  className,
+  width = 250,
+  height = 100,
+}) {
+  return (
+    <div className={`relative ${className} animate-float`}>
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="object-contain"
+      />
+    </div>
+  );
 }

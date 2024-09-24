@@ -1,20 +1,19 @@
 "use client";
 import React from "react";
-import { useParams, useRouter } from "next/navigation"; // useRouter 추가
+import { useParams, useRouter } from "next/navigation";
 import { types } from "@/constants/types";
 import CompatibleTypes from "@/components/CompatibleTypes";
 import Button from "@/components/Button";
 
 export default function Page() {
   const result = useParams();
-  const router = useRouter(); // useRouter 훅을 사용하여 네비게이션 기능 구현
+  const router = useRouter();
 
   const selectedType = types.find((type) => type.code === result.result) || {
     type: { label: "알 수 없는 유형", src: "", width: "50px" },
     description: "이 유형에 대한 설명이 없습니다.",
   };
 
-  // 홈 화면으로 이동하는 함수
   const handleNavigate = (path) => {
     router.push(path); // 경로를 설정하여 해당 경로로 이동
   };

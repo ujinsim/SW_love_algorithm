@@ -111,6 +111,7 @@ export default function Page() {
   const router = useRouter();
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null); // Track selected option
 
   const handleAnswer = (value) => {
     setAnswers((prev) => ({
@@ -118,16 +119,22 @@ export default function Page() {
       [questions[currentQuestionIndex].id]: value,
     }));
 
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-      const firstLetter = getLetter(1, 3);
-      const middleLetter = getLetter(4, 6);
-      const lastLetter = getLetter(7, 9);
-      const finalCode = `${firstLetter}${middleLetter}${lastLetter}`;
+    setSelectedOption(value); // Update selected option state
 
-      router.push(`test/${finalCode}`);
-    }
+    setTimeout(() => {
+      // Delay to allow color change to be visible before progressing
+      setSelectedOption(null); // Reset selected option
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex((prev) => prev + 1);
+      } else {
+        const firstLetter = getLetter(1, 3);
+        const middleLetter = getLetter(4, 6);
+        const lastLetter = getLetter(7, 9);
+        const finalCode = `${firstLetter}${middleLetter}${lastLetter}`;
+
+        router.push(`test/${finalCode}`);
+      }
+    }, 300); // 300ms delay before moving to the next question
   };
 
   const getLetter = (start, end) => {
@@ -150,7 +157,7 @@ export default function Page() {
           {/* ProgressBar */}
           <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden mb-5">
             <div
-              className="bg-pink-500 h-2.5"
+              className="bg-pink-500 h-2.5 transition-all duration-300" // Added transition for smooth animation
               style={{
                 width: `${
                   ((currentQuestionIndex + 1) / questions.length) * 100
@@ -169,8 +176,13 @@ export default function Page() {
             {question.options.map((option) => (
               <button
                 key={option.value}
-                className="bg-slate-50 rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 hover:bg-pink-600"
+                className={`rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 ${
+                  selectedOption === option.value
+                    ? "bg-pink-500 text-white" // Change color when clicked
+                    : "bg-slate-50"
+                }`}
                 onClick={() => handleAnswer(option.value)}
+                disabled={!!selectedOption} // Disable other buttons when one is selected
               >
                 {option.label}
               </button>
