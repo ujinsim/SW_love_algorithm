@@ -1,9 +1,10 @@
 export const types = [
   {
     type: {
-      src: "images/logos/Python-logo.svg",
+      src: "/images/logos/Python-logo.svg",
       label: "Python 유형",
-      width: "50px",
+      width: 50, // Corrected to a numeric value
+      height: 50, // Added height for consistency
     },
     code: "AAA",
     description:
@@ -14,9 +15,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/JS-logo.svg",
+      src: "/images/logos/JS-logo.svg",
       label: "JavaScript 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "ABB",
     description:
@@ -27,9 +29,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/Java-logo.png",
+      src: "/images/logos/Java-logo.png",
       label: "Java 유형",
-      width: "40px",
+      width: 40, // Corrected to a numeric value
+      height: 40, // Added height for consistency
     },
     code: "ABA",
     description:
@@ -40,9 +43,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/MySql-logo.svg",
+      src: "/images/logos/MySql-logo.svg",
       label: "MySQL 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "AAB",
     description:
@@ -53,9 +57,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/Assembly-logo.svg",
+      src: "/images/logos/Assembly-logo.svg",
       label: "Assembly 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "BAA",
     description:
@@ -66,9 +71,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/C++-logo.svg",
+      src: "/images/logos/C++-logo.svg",
       label: "C++ 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "BAB",
     description:
@@ -79,9 +85,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/Ruby-logo.svg",
+      src: "/images/logos/Ruby-logo.svg",
       label: "Ruby 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "BBA",
     description:
@@ -92,9 +99,10 @@ export const types = [
   },
   {
     type: {
-      src: "images/logos/Go-logo.svg",
+      src: "/images/logos/Go-logo.svg",
       label: "Go 유형",
-      width: "50px",
+      width: 50,
+      height: 50,
     },
     code: "BBB",
     description:

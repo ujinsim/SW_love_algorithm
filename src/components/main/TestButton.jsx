@@ -13,11 +13,7 @@ export default function TestButton() {
 
   return (
     <button className="flex flex-col rounded-lg items-center w-full mb-4 transition-colors duration-300">
-      <FloatingImage
-        src="images/mainLogo.png"
-        alt="test"
-        className="w-4/5 max-w-[250px] h-auto"
-      />
+      <FloatingImage src="/images/mainLogo.png" alt="test" />
       <TitleContent
         onClick={moveTest}
         subtitle={"프로그래밍 언어로 알아보는 "}
