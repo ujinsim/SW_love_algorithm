@@ -32,9 +32,9 @@ export default function page() {
 
       {showModal && (
         <AdModal
-          value={"사이다"}
-          valueColor="text-green-500"
-          img={"images/cider.PNG"}
+          value={"카카오페이 3만원 상품권 "}
+          valueColor="text-yellow-500"
+          img={"/images/ryan.png"}
           onClose={handleModalClose}
         />
       )}

@@ -15,7 +15,7 @@ const ImageDropdown = ({ options, selected, onSelect, label }) => {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300"
+        className="w-full flex items-center justify-between px-4 py-2 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300"
       >
         {label}:{" "}
         {selected
@@ -24,7 +24,7 @@ const ImageDropdown = ({ options, selected, onSelect, label }) => {
         <IoIosArrowDown />
       </button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white border text-neutral-700 border-gray-300 rounded-lg shadow-lg">
+        <div className="absolute z-10 w-full mt-2 bg-white text-neutral-700 border-gray-300 rounded-lg shadow-lg">
           {options.map((option) => (
             <button
               key={option.code}

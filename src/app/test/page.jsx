@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const questions = [
-  // 질문 목록
   {
     id: 1,
     question: "나는 만약,,연인과 다투고 나면!!",
@@ -37,7 +37,7 @@ const questions = [
     id: 4,
     question: "만약,, 나는 연인의 전애인을 만나면!!(속마음)",
     options: [
-      { label: "야이 !!!!! 😡 (폭군도마뱀)", value: "A" },
+      { label: "야이 XX야 !!!!! 😡 (폭군도마뱀)", value: "A" },
       { label: "? 어쩌라고 허허 (현재가 중요하지~)", value: "B" },
     ],
   },
@@ -52,7 +52,7 @@ const questions = [
       },
       {
         label:
-          "일단 숨어. 자기야 ᅲᅲ잠깐 저기좀 들어가 있어 하고 옷장에 넣어버리깅 (회피형)",
+          "일단 숨어. 자기야 ᅲᅲ잠깐 저기좀 들어가 있어 하고 옷장에 넣어버림",
         value: "B",
       },
     ],
@@ -77,41 +77,30 @@ const questions = [
   },
   {
     id: 8,
-    question: "자갸! 우리 데이튜하쟈쟈!!!!",
+    question: "수강신청을 망해버렸다......... ",
     options: [
-      { label: "어디가눙? 일단 만나서 생각하쟈쟈!", value: "A" },
+      { label: "2차 대안으로 후다닥 잡는다 !", value: "A" },
       {
-        label: "하 뭐먹지? 카페는 어디가지? 몇시쯤 귀가할 것 같지?",
+        label: "하... 우울 뭐라도 주워봐야지,,, 세미나..? 특강.. ? ㅠㅜㅠ",
         value: "B",
       },
     ],
   },
   {
     id: 9,
-    question: "솔직하게 말해보세요.(MBTI)",
+    question: "상어 100마리에 들어간 둘 중 한명만 구할 수 있다면 ?",
     options: [
-      { label: "나는 솔직함당!(T)", value: "A" },
-      { label: "나는 몽순임당!(F)", value: "B" },
+      { label: "친구", value: "A" },
+      { label: "애인", value: "B" },
     ],
   },
 ];
-
-const typeMap = {
-  AAA: "파이썬 유형",
-  ABA: "자바 유형",
-  AAB: "MySQL 유형",
-  ABB: "자바스크립트 유형",
-  BAA: "어셈블리어 유형",
-  BAB: "C++ 유형",
-  BBA: "루비 유형",
-  BBB: "Go 유형",
-};
 
 export default function Page() {
   const router = useRouter();
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null); // Track selected option
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleAnswer = (value) => {
     setAnswers((prev) => ({
@@ -119,11 +108,10 @@ export default function Page() {
       [questions[currentQuestionIndex].id]: value,
     }));
 
-    setSelectedOption(value); // Update selected option state
+    setSelectedOption(value);
 
     setTimeout(() => {
-      // Delay to allow color change to be visible before progressing
-      setSelectedOption(null); // Reset selected option
+      setSelectedOption(null);
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
       } else {
@@ -134,7 +122,7 @@ export default function Page() {
 
         router.push(`test/${finalCode}`);
       }
-    }, 300); // 300ms delay before moving to the next question
+    }, 300);
   };
 
   const getLetter = (start, end) => {
@@ -149,15 +137,15 @@ export default function Page() {
   };
 
   const question = questions[currentQuestionIndex];
+  const imagePath = `/images/test/test${question.id}.png`;
 
   return (
     <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-screen w-full overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[600px] flex flex-col items-center">
         <div className="w-[94%] bg-gradient-to-b from-white rounded-3xl h-full px-5 py-5 pt-0">
-          {/* ProgressBar */}
           <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden mb-5">
             <div
-              className="bg-pink-500 h-2.5 transition-all duration-300" // Added transition for smooth animation
+              className="bg-pink-500 h-2.5 transition-all duration-300"
               style={{
                 width: `${
                   ((currentQuestionIndex + 1) / questions.length) * 100
@@ -166,23 +154,37 @@ export default function Page() {
             />
           </div>
 
+          {/* 질문 이미지 */}
+
+          {/* 질문 텍스트 */}
           <div className="text-black text-2xl px-2 mb-5">
             질문 {currentQuestionIndex + 1} / {questions.length}
           </div>
           <div className="text-black text-2xl px-2 mb-5">
             {question.question}
           </div>
-          <div className="flex flex-col pt-20 gap-10 px-2">
+          <div className="w-full ">
+            <Image
+              src={imagePath}
+              alt={`Question ${question.id}`}
+              width={400} // 이미지 너비 설정
+              height={400} // 이미지 높이 설정
+              className="rounded-xl"
+            />
+          </div>
+
+          {/* 선택 옵션들 */}
+          <div className="flex flex-col pt-10 gap-10 px-2">
             {question.options.map((option) => (
               <button
                 key={option.value}
                 className={`rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 ${
                   selectedOption === option.value
-                    ? "bg-pink-500 text-white" // Change color when clicked
+                    ? "bg-pink-500 text-white"
                     : "bg-slate-50"
                 }`}
                 onClick={() => handleAnswer(option.value)}
-                disabled={!!selectedOption} // Disable other buttons when one is selected
+                disabled={!!selectedOption}
               >
                 {option.label}
               </button>

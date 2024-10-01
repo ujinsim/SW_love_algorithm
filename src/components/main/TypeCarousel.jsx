@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image"; // Import the Image component from Next.js
+import Image from "next/image";
 import { types } from "@/constants/types";
 
 export default function TypeCarousel() {
@@ -14,8 +14,8 @@ export default function TypeCarousel() {
             <Image
               src={item.type.src}
               width={item.type.width}
-              height={item.type.height || 40} // Provide height if not specified
-              alt={item.type.label || "type image"} // Add an alt attribute for accessibility
+              height={item.type.height || 40}
+              alt={item.type.label || "type image"}
               className="px-2"
             />
             <div className="text-stone-500 text-sm font-sans whitespace-nowrap text-center">

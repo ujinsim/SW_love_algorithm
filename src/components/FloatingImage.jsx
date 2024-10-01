@@ -6,7 +6,7 @@ export default function FloatingImage({
   alt,
   className,
   width = 250,
-  height = 100,
+  height = 50,
 }) {
   return (
     <div className={`relative ${className} animate-float`}>

@@ -1,42 +1,61 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { types } from "@/constants/types";
 
-const CompatibleTypes = ({ userCode, size = "large" }) => {
+const CompatibleTypes = ({ userCode, size = "small" }) => {
   const compatibleTypes = types.filter((type) =>
     type.compatibleWith.includes(userCode)
   );
 
-  const imageSize = size === "small" ? "h-4 w-4" : "h-10 w-10";
-  const textSize = size === "small" ? "text-xs" : "text-2xl";
-  const containerPadding = size === "small" ? "p-2 gap-2" : "p-3 gap-4";
+  const imageSize = size === "small" ? 22 : 40; // large일 때 이미지 크기를 40으로 설정
+  const textSize = size === "small" ? "text-xs" : "text-xl"; // large일 때 텍스트 크기를 2xl로 설정
+  const descriptionSize = size === "large" ? "text-base" : "text-base"; // large일 때 설명 크기 설정
+  const containerPadding = size === "small" ? "p-2 gap-2" : "p-6 gap-6"; // large일 때 더 넓은 padding과 gap 설정
 
   return (
     <div
-      className={`w-full mt-4 font-normal text-neutral-600 py-2 ${
+      className={`w-full mt-4 font-sans text-black py-2 ${
         size === "small" ? "text-base" : "text-xl"
       }`}
     >
-      <p className={`py-2 ${size === "small" ? "text-xl" : "text-4xl"}`}>
+      <p
+        className={`py-2 ${
+          size === "small" ? "text-xl" : "text-3xl"
+        } font-bold text-center`}
+      >
         이 유형은 나와 잘 맞아요 👏
       </p>
-      <div className="flex flex-row gap-4 mt-2 justify-center">
+      <div
+        className={`grid ${
+          size === "small" ? "grid-cols-2" : "grid-cols-2"
+        } mt-2 items-center justify-center gap-4 w-full `}
+      >
         {compatibleTypes.length > 0 ? (
           compatibleTypes.map((type) => (
             <div
               key={type.code}
-              className={`flex items-center whitespace-nowrap ${containerPadding} rounded-lg cursor-pointer`}
+              className={`flex ${
+                size === "small" ? "flex-row" : "flex-col h-60"
+              } items-center ${containerPadding} bg-white bg-opacity-40 rounded-lg cursor-pointer transition-all duration-300 ease-in-out w-full`}
             >
-              <img
-                src={`/${type.type.src}`}
+              <Image
+                src={`${type.type.src}`} // 이미지 경로가 올바른지 확인
                 alt={type.type.label}
-                className={imageSize}
+                width={imageSize} // 이미지 크기 조정
+                height={imageSize} // 이미지 크기 조정
               />
-              <span className={`font-sans ${textSize}`}>{type.type.label}</span>
-              {size === "large" && type.codeDescription && (
-                <span className={`font-sans ${textSize}`}>
-                  {type.codeDescription}
+              <span
+                className={`font-extrabold ${textSize} text-center mb-2 whitespace-nowrap`}
+              >
+                {type.type.label}
+              </span>
+              {size === "large" && type.shortDescription && (
+                <span
+                  className={`font-sans ${descriptionSize} text-gray-700 text-center mt-2`}
+                >
+                  {type.shortDescription}
                 </span>
               )}
             </div>
