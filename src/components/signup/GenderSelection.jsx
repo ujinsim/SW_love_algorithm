@@ -24,11 +24,11 @@ export default function GenderSelection({
           onClick={() => handleGenderChange("MALE")}
         >
           <div className="flex w-full justify-between">
-            <div className="flex flex-col w-full items-center justify-between pb-2">
+            <div className="flex flex-col w-full items-center justify-between pb-1">
               남자
             </div>
           </div>
-          <div className="text-4xl">🚹</div>
+          <div className="text-3xl">🚹</div>
         </button>
 
         <button
@@ -38,11 +38,11 @@ export default function GenderSelection({
           onClick={() => handleGenderChange("FEMALE")}
         >
           <div className="flex w-full justify-between">
-            <div className="flex w-full items-center justify-between pb-3">
+            <div className="flex w-full items-center justify-between pb-1">
               여자
             </div>
           </div>
-          <div className="text-4xl">🚺</div>
+          <div className="text-3xl">🚺</div>
         </button>
       </div>
     </fieldset>

@@ -37,7 +37,7 @@ export default function SignupPage() {
 
   // 자기소개 유효성 검사 (25글자 이내)
   const validateIntroduction = (intro) => {
-    return intro.length <= 25;
+    return intro.length <= 30;
   };
 
   const handleInputSubmit = (e) => {
@@ -61,7 +61,7 @@ export default function SignupPage() {
     // 자기소개 유효성 검사
     if (!validateIntroduction(introduction)) {
       valid = false;
-      newErrors.introduction = "자기소개는 25글자 이내로 작성해주세요.";
+      newErrors.introduction = "자기소개는 30글자 이내로 작성해주세요.";
     }
 
     // 개인정보 수집 동의 검사
@@ -150,7 +150,7 @@ export default function SignupPage() {
               type="text"
               value={introduction}
               onChange={(e) => setIntroduction(e.target.value)}
-              placeholder="자기소개를 25자 이내로 입력하세요"
+              placeholder="자기소개를 30자 이내로 입력하세요"
               error={errors.introduction}
             />
             <div className="flex items-center gap-2 w-full">

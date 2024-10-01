@@ -13,7 +13,6 @@ import UserProfile from "@/components/result/UserProfile";
 import { typeMap } from "@/constants/typeMap.js";
 import "react-loading-skeleton/dist/skeleton.css";
 import ConfirmModal from "@/components/ConfirmModal";
-import Navbar from "@/components/NavBar";
 
 export default function Page() {
   const [userData, setUserData] = useState(null);
@@ -55,7 +54,11 @@ export default function Page() {
           null,
           activeTab === "전체" ? null : activeTab === "여자" ? "FEMALE" : "MALE"
         );
-        setAllUsers(users);
+        // 현재 사용자 제외 필터링
+        const filteredUsers = users.filter(
+          (user) => user.instagramId !== instagramId
+        );
+        setAllUsers(filteredUsers);
         setLastVisibleDoc(lastVisibleDoc);
       } catch (error) {
         console.error("Error fetching all users:", error);
@@ -65,7 +68,7 @@ export default function Page() {
     };
 
     fetchAllUserData();
-  }, [activeTab]);
+  }, [activeTab, instagramId]);
 
   const fetchUsers = async () => {
     if (loading || !lastVisibleDoc) return;
@@ -75,7 +78,11 @@ export default function Page() {
         lastVisibleDoc,
         activeTab === "전체" ? null : activeTab === "여자" ? "FEMALE" : "MALE"
       );
-      setAllUsers((prevUsers) => [...prevUsers, ...users]);
+      // 현재 사용자 제외 필터링
+      const filteredUsers = users.filter(
+        (user) => user.instagramId !== instagramId
+      );
+      setAllUsers((prevUsers) => [...prevUsers, ...filteredUsers]);
       setLastVisibleDoc(newLastVisibleDoc);
     } catch (error) {
       console.error("Error fetching more users:", error);
