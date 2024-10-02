@@ -22,7 +22,7 @@ const questions = [
         label: "ᄏᄏ 귀여우니까 발견할 때 까지 말 안해주고 혼자 피식피식거리기",
         value: "A",
       },
-      { label: "나중에 남들이 먼져보기전에 당장; 말해주기", value: "B" },
+      { label: "나중에 남들이 먼저 보기전에 당장; 말해주기", value: "B" },
     ],
   },
   {
@@ -52,7 +52,7 @@ const questions = [
       },
       {
         label:
-          "일단 숨어. 자기야 ᅲᅲ잠깐 저기좀 들어가 있어 하고 옷장에 넣어버림",
+          "일단 숨어. 자기야 ᅲᅲ잠깐 저기좀 들어가 있어 하고 옷장에 넣어버리기",
         value: "B",
       },
     ],
@@ -68,30 +68,30 @@ const questions = [
   },
   {
     id: 7,
-    question:
-      "어제 풀타임 알바끝나구 드디어 쉬는날이다 ᅲᅲ! (쉬고싶은 마음이 1000%이다.) 애인 : 자갸 만나쟈 ᄒᄒᄒᄒ",
+    question: "애인 : 수강신청을 망했어…라고 했을 때 당신의 반응은?",
     options: [
-      { label: "오늘은 각자 집에서 쉴까!!", value: "A" },
-      { label: "그래!! 그래야지 ᄒᄒᄒᄒ", value: "B" },
+      { label: "지금 몇 학점인데?", value: "A" },
+      { label: "…어떡해.. 기분 괜찮아?", value: "B" },
     ],
   },
   {
     id: 8,
-    question: "수강신청을 망해버렸다......... ",
+    question: "이번엔 당신이 수강신청을 망해버린 상황이다.",
     options: [
       { label: "2차 대안으로 후다닥 잡는다 !", value: "A" },
       {
-        label: "하... 우울 뭐라도 주워봐야지,,, 세미나..? 특강.. ? ㅠㅜㅠ",
+        label: "하... 뭐라도 주워봐야지,,, 세미나..? 특강.. ? ㅠㅜㅠ",
         value: "B",
       },
     ],
   },
   {
     id: 9,
-    question: "상어 100마리에 들어간 둘 중 한명만 구할 수 있다면 ?",
+    question:
+      "상어 100마리가 있는 바다에 둘 중 한명만 구할 수 있다. 당신은? (당신의 100% 안전하다)",
     options: [
-      { label: "친구", value: "A" },
-      { label: "애인", value: "B" },
+      { label: "10년지기 절친", value: "A" },
+      { label: "1년만난 애인", value: "B" },
     ],
   },
 ];
@@ -167,8 +167,8 @@ export default function Page() {
             <Image
               src={imagePath}
               alt={`Question ${question.id}`}
-              width={400} // 이미지 너비 설정
-              height={400} // 이미지 높이 설정
+              width={300} // 이미지 너비 설정
+              height={300} // 이미지 높이 설정
               className="rounded-xl"
             />
           </div>
