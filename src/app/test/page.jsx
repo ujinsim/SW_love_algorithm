@@ -68,7 +68,7 @@ const questions = [
   },
   {
     id: 7,
-    question: "애인 : 수강신청을 망했어…라고 했을 때 당신의 반응은?",
+    question: "애인이 ‘수강신청이 망했어…’ 라고 했을 때 당신의 반응은?!",
     options: [
       { label: "지금 몇 학점인데?", value: "A" },
       { label: "…어떡해.. 기분 괜찮아?", value: "B" },
@@ -76,11 +76,15 @@ const questions = [
   },
   {
     id: 8,
-    question: "이번엔 당신이 수강신청을 망해버린 상황이다.",
+    question:
+      "당신은 연인과의 1주년 기념일을 잊어버린 상황이다. 당신의 대처방안은?!",
     options: [
-      { label: "2차 대안으로 후다닥 잡는다 !", value: "A" },
       {
-        label: "하... 뭐라도 주워봐야지,,, 세미나..? 특강.. ? ㅠㅜㅠ",
+        label: "와, 큰일이다! 바로 서프라이즈 선물 사고, 레스토랑 예약해야지! ",
+        value: "A",
+      },
+      {
+        label: "아... 어떻게 하지? 미안하다고 진심을 전해야겠다! ㅠㅠ",
         value: "B",
       },
     ],
@@ -88,7 +92,7 @@ const questions = [
   {
     id: 9,
     question:
-      "상어 100마리가 있는 바다에 둘 중 한명만 구할 수 있다. 당신은? (당신의 100% 안전하다)",
+      "상어 100마리가 있는 바다에 둘 중 한명만 구할 수 있다. 당신의 선택은 ?",
     options: [
       { label: "10년지기 절친", value: "A" },
       { label: "1년만난 애인", value: "B" },
@@ -154,16 +158,12 @@ export default function Page() {
             />
           </div>
 
-          {/* 질문 이미지 */}
-
           {/* 질문 텍스트 */}
-          <div className="text-black text-2xl px-2 mb-5">
-            질문 {currentQuestionIndex + 1} / {questions.length}
-          </div>
-          <div className="text-black text-2xl px-2 mb-5">
+
+          <div className="text-black text-xl px-2 mb-2 w-full flex justify-center text-center">
             {question.question}
           </div>
-          <div className="w-full ">
+          <div className="w-full flex justify-center">
             <Image
               src={imagePath}
               alt={`Question ${question.id}`}
@@ -174,7 +174,7 @@ export default function Page() {
           </div>
 
           {/* 선택 옵션들 */}
-          <div className="flex flex-col pt-10 gap-10 px-2">
+          <div className="flex flex-col pt-5 gap-3 px-2">
             {question.options.map((option) => (
               <button
                 key={option.value}

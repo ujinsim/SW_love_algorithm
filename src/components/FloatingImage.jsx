@@ -5,7 +5,7 @@ export default function FloatingImage({
   src,
   alt,
   className,
-  width = 250,
+  width = 300,
   height = 50,
 }) {
   return (
