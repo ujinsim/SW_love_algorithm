@@ -9,14 +9,13 @@ import CompatibleTypes from "@/components/CompatibleTypes";
 import Button from "@/components/Button";
 
 export default function Page() {
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [loading, setLoading] = useState(true);
   const result = useParams();
   const router = useRouter();
 
-  // 로딩 상태를 시뮬레이션하기 위해 useEffect 사용
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false); // 2초 후 로딩 완료 상태로 변경
+      setLoading(false);
     }, 2000);
   }, []);
 
@@ -28,7 +27,7 @@ export default function Page() {
 
   const selectedTypeMap = typeMap[result.result] || {
     borderColor: "border-gray-200",
-    gradient: "bg-gray-500", // 기본 배경 설정
+    gradient: "bg-gray-500",
     textColor: "text-gray-500",
   };
 
@@ -36,19 +35,9 @@ export default function Page() {
     router.push(path);
   };
 
-  // 줄바꿈과 줄마다 👉 추가 처리하는 함수
-  const formatDescriptionWithEmoji = (description) => {
-    return description.split("<br/>").map((line, index) => (
-      <span key={index}>
-        👉 {line}
-        <br />
-      </span>
-    ));
-  };
-
   return (
     <div
-      className={`flex-col min-h-screen w-full flex items-center justify-center ${selectedTypeMap.gradient}`}
+      className={`flex-col min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-white via-purple-300 to-purple-200 `}
     >
       {loading ? (
         <div className="flex justify-center items-center">
@@ -63,31 +52,19 @@ export default function Page() {
         <div
           className={`py-5 w-full max-w-[400px] flex flex-col items-center bg-opacity-70 bg-white p-5 shadow-lg ${selectedTypeMap.borderColor}`}
         >
-          {selectedType.shortDescription && (
-            <p className="text-lg text-gray-600 text-center mb-2">
-              {selectedType.shortDescription}
-            </p>
-          )}
-
           <h1
-            className={`text-4xl font-bold ${selectedTypeMap.textColor} text-center mb-4`}
+            className={`text-3xl font-bold text-black text-center mb-10 pt-10`}
           >
-            {selectedType.type.label}
+            👇 나의 연애 유형은 ?! 👇
           </h1>
 
           <Image
             src={`${selectedType.type.src}`}
             alt={selectedType.type.label}
-            width={200}
+            width={400}
             height={selectedType.type.height || 50}
-            className="mb-6"
+            className="mb-6 rounded-xl border-2 border-black p-2"
           />
-
-          <p
-            className={`text-lg text-gray-700 mb-6 text-left leading-relaxed bg-white p-6 rounded-xl shadow-inner`}
-          >
-            {formatDescriptionWithEmoji(selectedType.description)}
-          </p>
 
           <p
             className={`text-xl mb-2 pt-2 text-start w-full ${selectedTypeMap.textColor}`}
@@ -103,7 +80,7 @@ export default function Page() {
             <CompatibleTypes userCode={selectedType.code} size="large" />
           </div>
 
-          <p className="py-5 w-full flex flex-col text-center text-lg text-gray-800">
+          <p className="p-5 pt-20 w-full flex flex-col text-center text-lg text-gray-800">
             나와 잘 맞는 유형을 뽑고 싶다면?
             <br />
             카드를 만들어 보세요!
@@ -112,7 +89,7 @@ export default function Page() {
           <Button
             text={"홈 화면으로 이동"}
             onClick={() => handleNavigate("/")}
-            className={`w-full py-2 mt-3 rounded-lg ${selectedTypeMap.gradient} text-white shadow-lg hover:opacity-80 transition-opacity`}
+            className={`w-full py-2 mt-3 rounded-lg text-white shadow-lg hover:opacity-80 transition-opacity`}
           />
         </div>
       )}

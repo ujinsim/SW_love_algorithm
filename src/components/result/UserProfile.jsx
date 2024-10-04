@@ -31,7 +31,7 @@ const UserProfile = ({ userData, instagramId }) => {
   return (
     <div className="w-full text-black">
       <div className="flex flex-col items-center w-full px-3 ">
-        <p className="py-4 font-sans text-lg text-center w-full ">
+        <p className="py-4 text-xl text-center w-full ">
           {instagramId}님 환영합니다! 🎉
         </p>
         <div className="shadow-lg rounded-3xl p-6 bg-white w-full">

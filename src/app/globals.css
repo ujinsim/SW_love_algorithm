@@ -13,10 +13,21 @@
   }
 }
 
+@font-face {
+  font-family: "LeeSeoyun";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "LeeSeoyun", sans-serif;
+}
+
 .animate-slide {
   display: flex;
   gap: 1rem;
-  animation: slide 10s linear infinite alternate;
+  animation: slide 20s linear infinite alternate;
 }
 
 .animate-slide > * {

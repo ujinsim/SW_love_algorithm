@@ -1,7 +1,7 @@
 export const types = [
   {
     type: {
-      src: "/images/logos/Python-logo.svg",
+      src: "/images/results/1.png",
       label: "Python 유형",
       width: 50,
       height: 50,
@@ -16,7 +16,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/JS-logo.svg",
+      src: "/images/results/2.png",
       label: "JavaScript 유형",
       width: 50,
       height: 50,
@@ -31,7 +31,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/Java-logo.png",
+      src: "/images/results/3.png",
       label: "Java 유형",
       width: 40,
       height: 40,
@@ -46,7 +46,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/MySql-logo.svg",
+      src: "/images/results/4.png",
       label: "MySQL 유형",
       width: 50,
       height: 50,
@@ -61,7 +61,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/Assembly-logo.svg",
+      src: "/images/results/5.png",
       label: "Assembly 유형",
       width: 50,
       height: 50,
@@ -76,7 +76,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/C++-logo.svg",
+      src: "/images/results/6.png",
       label: "C++ 유형",
       width: 50,
       height: 50,
@@ -91,7 +91,7 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/Ruby-logo.svg",
+      src: "/images/results/7.png",
       label: "Ruby 유형",
       width: 50,
       height: 50,
@@ -106,17 +106,17 @@ export const types = [
   },
   {
     type: {
-      src: "/images/logos/Go-logo.svg",
-      label: "Go 유형",
+      src: "/images/results/8.png",
+      label: "R 유형",
       width: 50,
       height: 50,
     },
     code: "BBB",
     description:
-      "실용성과 효율을 사랑하는 히어로! 🔧✨<br/>간결하고 똑똑한 접근법으로 상황을 빠르게 해결하는 전문가!<br/>즉각적인 문제 해결 능력과 함께 계획적인 성격도 갖추고 있음!",
-    shortDescription: "효율적이고 실용적인 문제 해결사",
+      "감성적이면서도 분석적인 성격!<br/>모든 감정을 데이터로 해석하며, 스스로도 이해하기 어려운 복잡한 마음을 가지고 있음.<br/>깊은 감정 속으로 빠져들지만, 말로 표현하는 데 서툴러 상대방에게 직접 감정을 전달하려고 노력함.<br/>새벽 감성에 젖어 고뇌하는 청춘의 연애 스타일! 🌌",
+    shortDescription: "감성적이고 분석적인 새벽 감성 연애 스타일",
     codeDescription:
-      "Go는 구글에서 만든 프로그래밍 언어로, 빠르고 효율적인 코드를 작성하는 데 특화되어 있습니다. 특히 서버 프로그램이나 클라우드 서비스 개발에 많이 사용됩니다.",
-    compatibleWith: ["ABB", "BAB", "BBA"],
+      "R은 데이터를 분석하는 프로그래밍 언어로, 복잡한 문제를 해결하는 데 탁월한 능력을 가지고 있습니다. 연애에서도 마찬가지로 감정과 상황을 분석하는 성향을 보입니다. 감정적으로 깊이 빠져들지만, 표현하는 것은 서툴러 직접적인 소통을 중요하게 생각합니다.",
+    compatibleWith: ["ABA", "AAA", "BAB"],
   },
 ];

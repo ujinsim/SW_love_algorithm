@@ -8,7 +8,7 @@ const ConfirmModal = ({ isOpen, onConfirm, onCancel, loading }) => {
       <div className="bg-white p-6 rounded-2xl shadow-lg max-w-[400px]">
         <div className="flex justify-center flex-col text-center ">
           <AiFillInfoCircle className="text-6xl text-pink-200 flex w-full text-center my-4" />
-          <p className="mb-4 text-black font-sans text-2xl whitespace-nowrap text-center flex justify-center">
+          <p className="mb-4 text-black text-2xl whitespace-nowrap text-center flex justify-center">
             <span className="font-bold text-pink-600">해당 유저</span>를
             선택하시겠습니까?
           </p>
