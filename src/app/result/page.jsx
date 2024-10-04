@@ -78,7 +78,7 @@ export default function Page() {
         lastVisibleDoc,
         activeTab === "전체" ? null : activeTab === "여자" ? "FEMALE" : "MALE"
       );
-      // 현재 사용자 제외 필터링
+
       const filteredUsers = users.filter(
         (user) => user.instagramId !== instagramId
       );
@@ -155,7 +155,7 @@ export default function Page() {
           </div>
 
           {userData?.PICK_ID?.length === 0 && (
-            <div className="w-full py-2">
+            <div className="w-full ">
               <div
                 ref={tabRef}
                 className={`flex w-full p-0 -top-0 ${

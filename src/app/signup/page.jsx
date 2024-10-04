@@ -9,6 +9,7 @@ import { types } from "@/constants/types";
 import EmojiSelection from "@/components/EmojiSelection";
 import Certification from "@/components/signup/pages/Certification";
 import { join } from "@/utils/features/auth";
+import FloatingImages from "@/components/advertisement/FloatingImages";
 
 export default function SignupPage() {
   const [password, setPassword] = useState("");
@@ -109,6 +110,7 @@ export default function SignupPage() {
             💌 카드 만들기 💌
             <div className="absolute bottom-0 left-0 top-0 w-full shadow-xl" />
           </div>
+          <FloatingImages />
           <form
             onSubmit={handleInputSubmit}
             className="flex flex-col gap-4 px-10 pt-20 pb-10 w-full max-w-[500px] justify-center"

@@ -6,7 +6,6 @@ import Button from "../Button";
 export default function UserPickCard({ user, userType }) {
   const userData = typeMap[userType];
 
-  // ID를 클립보드에 복사하는 함수
   const copyIdToClipboard = () => {
     navigator.clipboard
       .writeText(user.INSTAGRAM_ID)
