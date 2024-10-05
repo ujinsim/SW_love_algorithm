@@ -29,7 +29,7 @@ export default function UserPickCard({ user, userType }) {
             <div
               className={`${userData.gradient || "bg-gray-100"} ${
                 userData.borderColor || "border-gray-300"
-              } bg-opacity-20 border-4 justify-center rounded-full flex text-xl font-sans py-1`}
+              } bg-opacity-20 border-4 justify-center rounded-full flex text-xl py-1`}
             >
               {userData.label}
             </div>
