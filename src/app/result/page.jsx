@@ -35,7 +35,6 @@ export default function Page() {
         try {
           const data = await getUserData(instagramId);
           setUserData(data);
-          setPickUserId(data.PICK_ID);
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
@@ -155,7 +154,7 @@ export default function Page() {
           </div>
 
           {userData?.PICK_ID?.length === 0 && (
-            <div className="w-full ">
+            <div className="w-full -py-10">
               <div
                 ref={tabRef}
                 className={`flex w-full p-0 -top-0 ${

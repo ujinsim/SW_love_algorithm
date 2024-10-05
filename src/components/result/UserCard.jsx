@@ -35,7 +35,7 @@ export default function UserCard({ user, userType, handleConfirmPick }) {
           className={`text-white w-full whitespace-nowrap border-b-2 border-opacity-20 px-3 py-3 ${userType.borderColor} text-center rounded-t-lg`}
         >
           <div
-            className={`${userType.gradient} ${userType.borderColor} w-min px-8 border-2 rounded-full flex text-sm py-1`}
+            className={`${userType.gradient} ${userType.borderColor} w-min px-4 border-2 rounded-full flex text-sm py-1`}
           >
             {userType.label}
           </div>

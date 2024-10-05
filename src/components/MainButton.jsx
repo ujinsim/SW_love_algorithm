@@ -6,7 +6,7 @@ export default function MainButton({ title, text, onClick, emoji }) {
   const router = useRouter();
 
   const baseStyles =
-    "w-full flex flex-col rounded-xl py-3 px-4 shadow-md transition-transform duration-300 ease-in-out transform w-full justify-start text-start ";
+    "w-full flex flex-col rounded-xl py-3 px-2 shadow-md transition-transform duration-300 ease-in-out transform w-full justify-start text-start ";
 
   const handleClick = () => {
     if (onClick) {
@@ -29,7 +29,7 @@ export default function MainButton({ title, text, onClick, emoji }) {
           className="text-sm text-neutral-800 mt-2 w-full justify-start flex whitespace-nowrap"
           dangerouslySetInnerHTML={{ __html: text }}
         />
-        <div className="text-8xl pt-2">{emoji}</div>
+        <div className="text-7xl pt-2">{emoji}</div>
       </button>
     </div>
   );
