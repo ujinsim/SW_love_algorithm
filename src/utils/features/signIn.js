@@ -13,8 +13,6 @@ const signIn = async (instagramId, password) => {
     );
     const { user } = userCredential;
 
-    console.log("Login successful:", user);
-
     return { user };
   } catch (error) {
     const errorMessage = {

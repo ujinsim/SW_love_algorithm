@@ -127,7 +127,7 @@ export const getAllUsers = async (lastDoc = null, gender = null) => {
 
     // 마지막 문서 스냅샷 (페이징을 위한 참조)
     const lastVisibleDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-    console.log(gender, users, "유저와젠더");
+
     return { users, lastVisibleDoc }; // 유저 데이터와 마지막 문서 반환
   } catch (error) {
     console.error("Error fetching users: ", error);
