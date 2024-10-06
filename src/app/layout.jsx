@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "사랑의 알고리즘💕",
@@ -11,7 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="text-pink-50 font-bold">{children}</body>
+      <body className="text-pink-50 font-bold">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
