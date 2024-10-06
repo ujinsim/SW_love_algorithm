@@ -9,7 +9,7 @@ import FloatingImage from "@/components/FloatingImage";
 export default function Page() {
   return (
     <div className="bg-gradient-to-b from-white via-pink-300 to-pink-200 min-h-dvh w-full overflow-hidden flex items-center justify-center">
-      <div className="w-full max-w-[600px] flex flex-col items-center">
+      <div className="w-full max-w-[600px] flex flex-col items-center my-2">
         <header className="w-full fixed flex justify-start top-0 left-0 z-50 p-2 px-4 bg-opacity-35 text-black font-bold text-lg shadow-md">
           <p className="rounded-full p-1 px-3 flex items-center w-50 bg-white">
             💻 @MJU_SW
@@ -24,7 +24,7 @@ export default function Page() {
             <TestButton />
           </div>
 
-          <div className="text-zinc-800 px-2 font-bold text-sm flex items-center">
+          <div className="text-zinc-800 px-2 font-bold text-sm flex items-center pb-2">
             <RxTriangleRight className="text-base text-zinc-900" />
             카드 만들기 전 테스트를 진행해주세요
           </div>

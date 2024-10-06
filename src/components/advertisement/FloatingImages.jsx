@@ -26,7 +26,7 @@ const FloatingImages = () => {
           <div
             className="absolute z-10"
             style={{
-              top: "30%",
+              top: "10%",
               left: "10%",
               animation: "fadeInUp 1s ease-in-out forwards",
             }}
@@ -36,7 +36,7 @@ const FloatingImages = () => {
               alt="카드 예시 1"
               width={100}
               height={100}
-              className=" opacity-40"
+              className=" opacity-50"
               style={{
                 transform: "rotate(-15deg)",
                 transition: "transform 0.5s ease",
@@ -46,7 +46,7 @@ const FloatingImages = () => {
           <div
             className="absolute z-10"
             style={{
-              top: "40%",
+              top: "30%",
               left: "70%",
               animation: "fadeInUp 1.5s ease-in-out forwards",
             }}
@@ -56,7 +56,7 @@ const FloatingImages = () => {
               alt="카드 예시 2"
               width={150}
               height={100}
-              className=" opacity-30"
+              className=" opacity-50"
               style={{
                 transform: "rotate(-20deg)",
                 transition: "transform 0.5s ease",
@@ -76,7 +76,7 @@ const FloatingImages = () => {
               alt="카드 예시 3"
               width={200}
               height={100}
-              className=" opacity-20"
+              className=" opacity-50"
               style={{
                 transform: "rotate(20deg)",
                 transition: "transform 0.5s ease",
@@ -88,18 +88,18 @@ const FloatingImages = () => {
 
       {/* Foreground Content */}
       <div className="relative z-20 w-full h-screen flex justify-center items-center">
-        <div className="flex flex-col items-center justify-center min-h-screen px-3">
+        <div className="flex flex-col items-center justify-center min-h-screen px-5">
           <div className="text-center">
             <span className="bg-white text-black text-sm font-bold px-7 py-2 rounded-full shadow">
               @MJU_SW
             </span>
           </div>
 
-          <div className="mt-6 text-center space-y-4 flex flex-col">
-            <div className="bg-white text-black text-4xl shadow-xl font-bold px-6 py-3 rounded-full inline-block">
+          <div className="mt-6 text-center space-y-4 flex flex-col justify-center w-full items-center">
+            <div className="bg-white text-black text-4xl w-80 shadow-xl font-bold px-6 py-3 rounded-full inline-block">
               자신의 유형을 담은
             </div>
-            <div className="bg-pink-400 text-white text-2xl shadow-xl font-bold px-6 py-3 rounded-full inline-block ">
+            <div className="bg-pink-400 text-white text-xl w-48 justify-center items-center shadow-xl font-bold px-6 py-3 rounded-full inline-block ">
               카드 만들기
             </div>
           </div>
