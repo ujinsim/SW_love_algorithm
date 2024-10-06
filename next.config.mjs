@@ -9,6 +9,9 @@ const nextConfig = {
 
     return config;
   },
+  compiler: {
+    removeConsole: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
