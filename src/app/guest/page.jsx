@@ -50,7 +50,7 @@ export default function Page() {
   );
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-dvh w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-gradient-to-b from-white via-pink-300 to-pink-200 min-h-dvh w-full overflow-hidden flex items-center justify-center">
       <div className="w-full bg-opacity-20 max-w-[500px] rounded-xl flex flex-col text-center justify-center">
         {loading ? (
           <>
@@ -102,14 +102,13 @@ export default function Page() {
                   })}
               </div>
 
-              <div className="w-full flex gap-4 flex-col px-20 py-3 mt-12 mb-8 text-neutral-600">
-                <p>더 많은 카드를 보고싶다면? 카드를 만들어 보세요! </p>
-
-                <Button
-                  text={"홈 화면으로 이동"}
-                  onClick={() => handleNavigate("/")}
-                />
+              <div className="w-full flex gap-1 flex-col px-20 py-3 mt-5 mb-4 text-neutral-600">
+                <p>더 많은 카드를 보고싶다면?</p> <p> 카드를 만들어 보세요! </p>
               </div>
+              <Button
+                text={"홈 화면으로 이동"}
+                onClick={() => handleNavigate("/")}
+              />
             </div>
           </>
         )}

@@ -88,3 +88,43 @@ body {
   align-items: center;
   font-size: 24px;
 }
+.heart-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-5 {
+  padding: 1rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.smallheart {
+  font-size: 2rem;
+  color: black;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

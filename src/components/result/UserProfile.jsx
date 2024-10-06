@@ -37,7 +37,7 @@ const UserProfile = ({ userData, instagramId }) => {
         <div className="shadow-lg rounded-3xl p-6 bg-white w-full">
           <div className="flex items-center gap-6 w-full">
             <div
-              className={`text-7xl p-4 border-4 rounded-full ${borderColor} shadow-md bg-gray-50`}
+              className={`text-7xl p-4 border-4 rounded-full ${borderColor} `}
             >
               {userData.EMOJI}
             </div>

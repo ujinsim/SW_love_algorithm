@@ -12,9 +12,9 @@ const CompatibleTypes = ({ userCode, size = "small" }) => {
   const imageSize = size === "small" ? 22 : 45;
   const textSize =
     size === "small"
-      ? "text-xl bg-pink-100 px-2 w-full py-2 rounded-xl"
+      ? "text-base bg-pink-100 px-2 w-full py-2 rounded-xl"
       : "text-xl";
-  const containerPadding = size === "small" ? "p-2 gap-2 " : "py-2 px-8 gap-4";
+  const containerPadding = size === "small" ? "p-2 gap-2 " : "py-2 px-6 gap-4";
 
   return (
     <div
@@ -42,7 +42,6 @@ const CompatibleTypes = ({ userCode, size = "small" }) => {
                 size === "small" ? "flex-row" : "flex-col h-60"
               } items-center ${containerPadding} bg-white bg-opacity-40 rounded-lg cursor-pointer transition-all duration-300 ease-in-out w-full `}
             >
-              {/* 이미지 조건부 렌더링: small일 때는 이미지 안 뜨게 */}
               {size !== "small" && (
                 <Image
                   src={`${type.type.src}`}

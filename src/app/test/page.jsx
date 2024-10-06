@@ -7,7 +7,7 @@ import Image from "next/image";
 const questions = [
   {
     id: 1,
-    question: "나는 만약,,연인과 다투고 나면?!<br/>지체될수록 오해만 생겨",
+    question: "나는 만약,,연인과 다투고 나면?!",
     options: [
       {
         label: "지금 당장 바로 풀어야지.<br/>지체될수록 오해만 생겨",
@@ -92,7 +92,7 @@ const questions = [
     options: [
       {
         label:
-          "와, 큰일이다!<br/>바로 서프라이즈 선물 사고,<br/>레스토랑 예약해야지! 🎁💨",
+          "와, 큰일이다!<br/>바로 서프라이즈 선물 사고,<br/>레스토랑 예약해야지! ",
         value: "A",
       },
       {
@@ -156,12 +156,12 @@ export default function Page() {
   const imagePath = `/images/test/test${question.id}.png`;
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-300 to-pink-300 min-h-screen w-full overflow-hidden flex items-center justify-center">
-      <div className="w-full max-w-[600px] flex flex-col items-center">
-        <div className="w-[94%] bg-gradient-to-b from-white rounded-3xl h-full px-5 py-5 pt-0">
-          <div className="w-full bg-white rounded-full h-2.5 overflow-hidden mb-5">
+    <div className="bg-gradient-to-b from-white via-pink-300 to-pink-300 min-h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="w-full max-w-[600px] flex flex-col items-center ">
+        <div className="w-[94%] bg-gradient-to-b from-white rounded-2xl h-full px-5 py-5 pt-0">
+          <div className="w-full bg-white rounded-full h-2.5 overflow-hidden mb-2">
             <div
-              className="bg-pink-500 h-2.5 transition-all duration-300"
+              className="bg-pink-400 h-2 transition-all duration-300"
               style={{
                 width: `${
                   ((currentQuestionIndex + 1) / questions.length) * 100
@@ -172,7 +172,7 @@ export default function Page() {
 
           {/* 질문 텍스트 */}
           <div
-            className="text-black text-xl px-2 mb-2 w-full flex justify-center text-center py-4"
+            className="text-black text-xl px-2 mb-1 w-full flex justify-center text-center py-2"
             dangerouslySetInnerHTML={{ __html: question.question }}
           />
 
@@ -180,18 +180,18 @@ export default function Page() {
             <Image
               src={imagePath}
               alt={`Question ${question.id}`}
-              width={300} // 이미지 너비 설정
-              height={300} // 이미지 높이 설정
-              className="rounded-xl"
+              width={300}
+              height={300}
+              className="rounded-lg"
             />
           </div>
 
           {/* 선택 옵션들 */}
-          <div className="flex flex-col pt-5 gap-3 px-2">
+          <div className="flex flex-col pt-3 gap-3 px-2">
             {question.options.map((option) => (
               <button
                 key={option.value}
-                className={`rounded-full text-black py-3 px-4 cursor-pointer transition-colors duration-300 ${
+                className={` text-black py-3 px-4 cursor-pointer transition-colors duration-300 border-2 border-black ${
                   selectedOption === option.value
                     ? "bg-pink-500 text-white"
                     : "bg-white"

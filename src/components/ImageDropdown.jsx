@@ -15,7 +15,7 @@ const ImageDropdown = ({ options, selected, onSelect, label }) => {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="w-full flex items-center justify-between px-4 py-2 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300"
+        className="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300"
       >
         {label}:{" "}
         {selected
