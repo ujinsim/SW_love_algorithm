@@ -38,7 +38,7 @@ const FloatingImages = () => {
               alt="카드 예시 1"
               width={100}
               height={100}
-              className="rounded-lg shadow-lg opacity-40"
+              className="opacity-40"
               style={{
                 transform: "rotate(-15deg)",
                 transition: "transform 0.5s ease",
@@ -58,7 +58,7 @@ const FloatingImages = () => {
               alt="카드 예시 2"
               width={150}
               height={100}
-              className="rounded-lg shadow-lg opacity-30"
+              className=" opacity-30"
               style={{
                 transform: "rotate(-20deg)",
                 transition: "transform 0.5s ease",
@@ -76,9 +76,9 @@ const FloatingImages = () => {
             <Image
               src="/images/cardex3.png"
               alt="카드 예시 3"
-              width={200}
+              width={250}
               height={100}
-              className="rounded-lg shadow-lg opacity-20"
+              className="opacity-20"
               style={{
                 transform: "rotate(20deg)",
                 transition: "transform 0.5s ease",
