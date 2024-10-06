@@ -42,7 +42,7 @@ export const typeMap = {
     textColor: "text-pink-500",
   },
   BBB: {
-    label: "Go 유형",
+    label: "R 유형",
     borderColor: "border-purple-200",
     gradient: "bg-purple-300",
     textColor: "text-purple-500",
