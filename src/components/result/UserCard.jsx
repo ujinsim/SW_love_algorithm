@@ -1,22 +1,22 @@
 import React from "react";
 
 export default function UserCard({ user, userType, handleConfirmPick }) {
-  // 마지막 10글자 전에 나오는 첫 번째 띄어쓰기를 기준으로 줄바꿈 처리
   const formatIntroduction = (text) => {
     const position = text.length - 10;
     const substringBeforePosition = text.substring(0, position);
-    const lastSpaceBeforePosition = substringBeforePosition.lastIndexOf(" ");
+    const firstSpaceBeforePosition = substringBeforePosition.lastIndexOf(" ");
 
-    if (lastSpaceBeforePosition !== -1) {
-      // 띄어쓰기가 있으면 그 위치에서 줄바꿈
+    if (firstSpaceBeforePosition !== -1) {
+      // 첫 번째 띄어쓰기를 찾으면 그 위치에서 줄바꿈
       return (
         <>
-          {text.substring(0, lastSpaceBeforePosition)}
+          {text.substring(0, firstSpaceBeforePosition)}
           <br />
-          {text.substring(lastSpaceBeforePosition + 1)}
+          {text.substring(firstSpaceBeforePosition + 1)}
         </>
       );
     }
+
     // 띄어쓰기가 없으면 원래 텍스트 반환
     return text;
   };

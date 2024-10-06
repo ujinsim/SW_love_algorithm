@@ -25,7 +25,7 @@ export default function GenderSelection({
         >
           <div className="flex w-full justify-between">
             <div className="flex flex-col w-full items-center justify-between ">
-              Alpha male
+              알파 메일 (남자)
             </div>
           </div>
         </button>
@@ -38,7 +38,7 @@ export default function GenderSelection({
         >
           <div className="flex w-full justify-between">
             <div className="flex w-full items-center justify-between">
-              Alpha female
+              알파 피메일 (여자)
             </div>
           </div>
         </button>

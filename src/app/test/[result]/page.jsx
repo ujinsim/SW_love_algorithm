@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -7,6 +6,7 @@ import { types } from "@/constants/types";
 import { typeMap } from "@/constants/typeMap";
 import CompatibleTypes from "@/components/CompatibleTypes";
 import Button from "@/components/Button";
+import Loader from "@/components/Loader";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -37,16 +37,11 @@ export default function Page() {
 
   return (
     <div
-      className={`flex-col min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-white via-purple-300 to-purple-200 `}
+      className={`flex-col min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-white via-pink-300 to-pink-200`}
     >
       {loading ? (
         <div className="flex justify-center items-center">
-          <div
-            className="animate-spin w-12 h-12 border-4 border-t-pink-500 border-pink-200 rounded-full"
-            role="status"
-          >
-            <span className="sr-only">Loading...</span>
-          </div>
+          <Loader /> {/* Use the heart loader during loading */}
         </div>
       ) : (
         <div
@@ -78,6 +73,54 @@ export default function Page() {
 
           <div className="text-center w-full flex items-center">
             <CompatibleTypes userCode={selectedType.code} size="large" />
+          </div>
+
+          <div className="bg-blue-100 p-6 text-center rounded-lg shadow-md my-10">
+            <h1 className="text-3xl font-bold text-black">
+              instagram 공유 이벤트
+            </h1>
+            <p className="text-sm text-gray-600 my-2"></p>
+
+            <div className="bg-white rounded-lg shadow-md p-6 mt-4">
+              <div className="text-left">
+                <div className="flex items-start text-black">
+                  <div className="text-left">
+                    <p className="font-bold text-3xl">if (</p>
+                    <p className="text-lg font-semibold">
+                      1. 자신의 유형결과 캡쳐
+                    </p>
+                    <p className="text-lg font-semibold">
+                      2. 공개계정으로{" "}
+                      <span className="text-blue-600">@mju_sw</span> 태그 후
+                      스토리 업로드
+                    </p>
+                    <p className="text-lg font-semibold">
+                      3. 팔로우 및 참여완료! DM전송
+                    </p>
+                    <p className="font-bold text-3xl">) ⭐️ ⭐️ ⭐️</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center mt-4">
+                  <div className="flex items-center">
+                    <div className="bg-yellow-400 rounded-full px-3 py-1 flex items-center">
+                      <span className="text-lg font-bold text-black whitespace-nowrap">
+                        💬 kakao Pay
+                      </span>
+                    </div>
+                    <span className="ml-4 text-xl font-bold text-gray-800">
+                      30,000원
+                    </span>
+                  </div>
+                </div>
+                <p className="mt-2 text-lg text-gray-700">
+                  *다섯 분께 증정합니다
+                </p>
+                <p className="mt-2 text-base text-gray-400">
+                  *본 이벤트는 축제기간 한정 진행됩니다
+                </p>
+              </div>
+            </div>
           </div>
 
           <p className="p-5 pt-20 w-full flex flex-col text-center text-lg text-gray-800">

@@ -103,17 +103,18 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-purple-200 to-pink-300 max-h-max flex items-center justify-center py-10">
+    <div className="bg-gradient-to-b from-white via-pink-200 to-pink-100 max-h-max flex items-center justify-center py-10">
       {!isInputComplete ? (
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="flex justify-center items-center bg-gradient-to-b from-white via-purple-100 z-10 text-3xl font-bold text-gray-900 text-center fixed w-full top-0 py-4 bg-white">
+          <FloatingImages />
+          <div className="flex justify-center items-center bg-gradient-to-b from-white via-pink-100 z-50 text-3xl font-bold text-gray-900 text-center fixed w-full top-0 py-4 bg-white">
             💌 카드 만들기 💌
             <div className="absolute bottom-0 left-0 top-0 w-full shadow-xl" />
           </div>
-          <FloatingImages />
+
           <form
             onSubmit={handleInputSubmit}
-            className="flex flex-col gap-4 px-10 pt-20 pb-10 w-full max-w-[500px] justify-center"
+            className="flex flex-col gap-4 px-10 pb-10 w-full max-w-[500px] justify-center"
           >
             <ImageDropdown
               label="유형"
