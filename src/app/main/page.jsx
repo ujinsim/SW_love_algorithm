@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div className="bg-gradient-to-b from-white via-pink-300 to-pink-200 min-h-dvh w-full overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[600px] flex flex-col items-center">
-        <header className="w-full fixed flex justify-between items-center top-0 left-0 z-50 p-2 px-4 bg-opacity-35 text-black font-bold text-lg shadow-md">
+        <header className="w-full fixed flex justify-start top-0 left-0 z-50 p-2 px-4 bg-opacity-35 text-black font-bold text-lg shadow-md">
           <p className="rounded-full p-1 px-3 flex items-center w-50 bg-white">
             💻 @MJU_SW
           </p>

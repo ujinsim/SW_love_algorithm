@@ -19,10 +19,8 @@ const FloatingImages = () => {
 
   return (
     <>
-      {/* Background Layer */}
       <div className="absolute top-0 left-0 w-full h-screen z-0"></div>
 
-      {/* Floating Cards Layer */}
       {isImagesLoaded && (
         <>
           <div
@@ -38,7 +36,7 @@ const FloatingImages = () => {
               alt="카드 예시 1"
               width={100}
               height={100}
-              className="opacity-40"
+              className=" opacity-40"
               style={{
                 transform: "rotate(-15deg)",
                 transition: "transform 0.5s ease",
@@ -76,9 +74,9 @@ const FloatingImages = () => {
             <Image
               src="/images/cardex3.png"
               alt="카드 예시 3"
-              width={250}
+              width={200}
               height={100}
-              className="opacity-20"
+              className=" opacity-20"
               style={{
                 transform: "rotate(20deg)",
                 transition: "transform 0.5s ease",
