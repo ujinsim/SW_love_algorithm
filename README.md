@@ -15,7 +15,9 @@
 
 ## 📱 사용자 화면
 
-[<video controls src="SW_algorithm_화면녹화 " title="Title"></video>](https://github.com/user-attachments/assets/1b34f028-336d-4187-aef0-404907556949)
+![ezgif-2-73a15dc677](https://github.com/user-attachments/assets/79c60c37-fab0-4a62-bebb-eb30d200cd0a)
+
+
 
 <br/>
 
