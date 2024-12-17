@@ -4,15 +4,20 @@
 
 프로그래밍 언어 유형 테스트를 통해 나와 잘 맞는 상대를 찾아보세요 💖
 
+<br/>
+
 ## 📝 서비스 소개
 
 1. **테스트를 통해 자신의 프로그래밍 언어 유형을 확인**합니다.
 2. **자신의 유형과 잘 맞는 상대 유형을 확인하고 카드를 제작**합니다. _(1장당 1000원)_
 3. **카드를 뽑아 상대방의 인스타그램 아이디를 확인**할 수 있습니다. 🎟️
+<br/>
 
 ## 📱 사용자 화면
 
-<video controls src="화면 기록 2024-12-17 오후 5.13.39 (online-video-cutter.com).mp4" title="Title"></video>
+[<video controls src="SW_algorithm_화면녹화 " title="Title"></video>](https://github.com/user-attachments/assets/1b34f028-336d-4187-aef0-404907556949)
+
+<br/>
 
 ## 📊 서비스 방문자
 
@@ -20,9 +25,13 @@
 
 ![alt text](<스크린샷 2024-12-17 오후 6.01.49.png>)
 
+<br/>
+
 ## 🗂 초기 기획서
 
 👉 [초기 기획서 링크](https://feline-climb-196.notion.site/a3ad3227efae4a35831dddd45e681750?pvs=74)
+
+<br/>
 
 ## 🛠️ 기술 스택
 
@@ -42,6 +51,7 @@
 </div>
 
 ---
+<br/>
 
 ## 📖 회고 및 개발 일기
 
