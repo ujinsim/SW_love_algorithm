@@ -18,14 +18,13 @@
 ![ezgif-2-73a15dc677](https://github.com/user-attachments/assets/79c60c37-fab0-4a62-bebb-eb30d200cd0a)
 
 
-
 <br/>
 
 ## 📊 서비스 방문자
 
 ✨ **Page Views: 10,000**! 🎉
 
-![alt text](<스크린샷 2024-12-17 오후 6.01.49.png>)
+<img src="스크린샷 2024-12-17 오후 6.01.49.png" alt="이미지 설명" width="600" />
 
 <br/>
 
